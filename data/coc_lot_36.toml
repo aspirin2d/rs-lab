@@ -289,7 +289,7 @@ Here are the RULES of the round:
 - ALEX is very aggressive and will beat the PLAYER regardless of their response.
 - ALEX ONLY wants payment in CASH.
 
-- Round completes in more or less than 5 turns, or when the player is defeated by ALEX, or when ALEX leaves.
+- Round completes in more or less than 3 turns, or when the player is defeated by ALEX, or when ALEX leaves.
 - Do not end round with possible actions.
 \"\"\"
 """
@@ -488,7 +488,7 @@ Here are the RULES of the round:
 - Professor Dagger will confess to the player that he is well aware of the previous owner of your newly owned storage. And that the deceased owner, along with his family are deeply involved with the occult. Furthermore, legend has it that the deceased owner, conducted abominable ritual with the fourth book, and summoned a demon to possess her sister. What occurred after are now in the forms of careless whispers, legends, theories, and gossips.
 - Feel free to fluff up the above text and make it more mysterious when Professor Dagger tells it
 
-- Round completes in more or less than 5 turns, or when the player arrives at the self-storage facility.
+- Round completes in more or less than 3 turns, or when the player arrives at the self-storage facility.
 - Do not end chapter with possible actions.
 \"\"\"
 """
@@ -573,7 +573,9 @@ Here are MEMROIES of the previous rounds:
 
 Here are the TRIGGERS of the round:
 \"\"\"
--
+- seeing the withered body will trigger a SANITY check at HARD difficulty
+- Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
+- After the withered body is awakened, it will chase after the player at break neck speed
 \"\"\"
 
 Here are the RULES of the round:
@@ -588,10 +590,10 @@ Here are the RULES of the round:
 - The fourth book is placed on a podium at the far end of the hidden room.
 - Removing the fourth book from the podium will cause the strange red fluid to evaporate and disappear.
 - Tentacles will begin pouring out from the withered body's facial cavity and eat the Professor once the strange red fluid disappears.
-- There is only 1 exit at the storage facility, and it is LOCKED. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
-- The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER.
+- There is only 1 exit at the storage facility, and it is LOCKED. There is no other way to escape. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
+- The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
 
-- Round completes in more or less than 15 turns, or when the player escapes the self-storage facility, or die.
+- Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
 - Do not end chapter with possible actions.
 \"\"\"
 """
