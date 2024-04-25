@@ -167,9 +167,8 @@ Here is the CONTEXT of the round:
 \"\"\"
 You follow the manager through the myriad hallways to his dimly lit office, where the furnishings and appliances remain unchanged since the 90’s. He often reminds you that the facility is in fact even older, and has been here since the 60’s. You made a quick phone call to Alex, a man you owe money to, and explained to him that you will pay him back in a few days once you have it, to which he responded with distasteful threats. The manager took out an old tin box and placed it on his desk and reached towards you with an open palm, gesturing for you to pay up, which you obliged. Upon handing you a key for your newly owned storage room, he urged you to watch some old security footage. Through his CRT screen, he explains to you that the previous owner visited the storage room every day for as long as he can remember. What’s even stranger is that he would hop 3 times towards the storage before entering, and would always bring a paper bag with him, and it would always be empty when he leaves. Regardless of the strange footage and information, you began making your way towards your truck to grab a duffle bag so that you may start clearing the storage and look for things valuable to sell. As you are walking back, you are confronted by a middle-aged hispanic woman, she requests that you give her access to her lot, which you purchased last time so that she may recover her old family silver locket.
 
-
 {%- if memories %}
-Here are MEMROIES of the previous rounds:
+Here are MEMORIES of the previous rounds:
 {%- for memory in memories %}
 - {{memory}}
 {%- endfor %}
@@ -197,6 +196,15 @@ Here are the RULES of the round:
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
+{% if memories %}
+Memories:
+\"\"\"
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+\"\"\"
+{% endif %}
+
 You follow the manager through the myriad hallways to his dimly lit office, where the furnishings and appliances remain unchanged since the 90’s. He often reminds you that the facility is in fact even older, and has been here since the 60’s. You made a quick phone call to Alex, a man you owe money to, and explained to him that you will pay him back in a few days once you have it, to which he responded with distasteful threats. The manager took out an old tin box and placed it on his desk and reached towards you with an open palm, gesturing for you to pay up, which you obliged. Upon handing you a key for your newly owned storage room, he urged you to watch some old security footage.
 
 Through his CRT screen, he explains to you that the previous owner visited the storage room every day for as long as he can remember. What’s even stranger is that he would hop 3 times towards the storage before entering, and would always bring a paper bag with him, and it would always be empty when he leaves. 
@@ -263,10 +271,8 @@ As you continue to rummage through the newly acquired storage room, you come acr
 
 You discovered a few more expensive looking objects and placed it inside your duffle bag, then proceeded to carefully load the peculiar wooden block onto your truck. Just as you closed the tailgates, you suddenly found yourself knocked on the hard gravel floor. Your lips, bleeding profusely from a cut, and as you look up, you realize it was Alex.
 
-
-
 {%- if memories %}
-Here are MEMROIES of the previous rounds:
+Here are MEMORIES of the previous rounds:
 {%- for memory in memories %}
 - {{memory}}
 {%- endfor %}
@@ -296,6 +302,15 @@ Here are the RULES of the round:
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
+{% if memories %}
+Memories:
+\"\"\"
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+\"\"\"
+{% endif %}
+
 As you continue to rummage through the newly acquired storage room, you come across a peculiar round wooden block with intricate yet strange carvings around the thick edges. One particular feature that stands out among all others is the fine pentagram inlay in the center, coupled with clean carvings of unfamiliar symbols. Even an untrained eye can recognize the quality of craftsmanship and time committed to produce such an object, yet, you have doubts as to how much this table-like wooden block can fetch. 
 
 You discovered a few more expensive looking objects and placed it inside your duffle bag, then proceeded to carefully load the peculiar wooden block onto your truck. Just as you closed the tailgates, you suddenly found yourself knocked on the hard gravel floor. Your lips, bleeding profusely from a cut, and as you look up, you realize it was Alex.
@@ -365,7 +380,7 @@ You make your way to the address given by the self-storage facility manager, and
 She invites you to bring your peculiar objects to your personal library, its walls filled with books you have never seen or heard before. You placed the round wooden block on the table, along with the objects in your duffle bag, and awaited her appraisal.
 
 {%- if memories %}
-Here are MEMROIES of the previous rounds:
+Here are MEMORIES of the previous rounds:
 {%- for memory in memories %}
 - {{memory}}
 {%- endfor %}
@@ -394,6 +409,15 @@ Here are the RULES of the round:
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
+{% if memories %}
+Memories:
+\"\"\"
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+\"\"\"
+{% endif %}
+
 The manager hands you some gauze and a bottle of rubbing alcohol as the blood drips down the sink while you clean yourself up in the restroom. You focus on the stinging pain of the alcohol on your cut lips, reminding you how unfair life could be, and that life would relentlessly beat men like you down until your spirit breaks. Yet, the pain simultaneously fuels your will to survive, to live on, a chance that the people you fought in the Afghan war never had. In a way, you live on for their sake, trying to be grateful despite the hardship that has plagued you ever since your honorable discharge. 
 
 You stared long and hard at yourself in the mirror before closing the wound with a closure strip and covered it with another layer of gauze. The manager, sympathetic to your predicament, recommended you to a dealer that specializes in collecting esoteric and abstruse items. You felt insulted by his act of pity, but reluctantly agreed as you weighed your current situation to your pride. 
@@ -467,7 +491,7 @@ You hastily explain your recently acquired storage, and how you still haven’t 
 You quickly load everything back onto your truck, and with Professor Dagger in the passenger seat, the two of you make way towards the self-storage facility. On your way there, the Professor informed you that he has a confession to make.
 
 {%- if memories %}
-Here are MEMROIES of the previous rounds:
+Here are MEMORIES of the previous rounds:
 {%- for memory in memories %}
 - {{memory}}
 {%- endfor %}
@@ -488,13 +512,22 @@ Here are the RULES of the round:
 - Professor Dagger will confess to the player that he is well aware of the previous owner of your newly owned storage. And that the deceased owner, along with his family are deeply involved with the occult. Furthermore, legend has it that the deceased owner, conducted abominable ritual with the fourth book, and summoned a demon to possess her sister. What occurred after are now in the forms of careless whispers, legends, theories, and gossips.
 - Feel free to fluff up the above text and make it more mysterious when Professor Dagger tells it
 
-- Round completes in more or less than 3 turns, or when the player arrives at the self-storage facility.
+- Round completes in more or less than 2 turns, or when the player arrives at the self-storage facility.
 - Do not end chapter with possible actions.
 \"\"\"
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
+{% if memories %}
+Memories:
+\"\"\"
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+\"\"\"
+{% endif %}
+
 Professor Dagger examines the seance table with utmost concentration and scrutiny, being as careful as possible to not inflict any damage to the table. He then shifted his attention to the three leather bound books, inspecting its condition while flipping through its contents to verify its authenticity. 
 
 After much inspection, he turned his attention towards you, and inquired about a fourth book, expressing that altogether, it could fetch a price well above $2,000,000. Your eyes lit up, recognizing this to be your chance to turn your life around, pay off your debts and perhaps start something by yourself. The mystery of the fourth book piqued your interest despite the disinterest in the occult, and such curiosity beckoned you to ask about the importance of the fourth book. A heavy silence ensued, the Professor’s shadowy face under the chandelier’s soft  glow gazed into your eyes with great earnestness. In a somber tone, he explained that the fourth book is the rarest of them all, for it allows its user to bind a demon to the material world, to earth. And the moment the transaction is complete, the book would self combust to a pile of ash unless the demon has been betrayed and unable to collect its debt, thus explaining the price of the book. 
@@ -511,9 +544,9 @@ possible actions:
 3. Threaten him that if he lied about the money, you would hurt him real bad
 """
 
-# the sixth round infomation and messages
+# the final round infomation and messages
 [[rounds]]
-name="The Confession"
+name="The Truth"
 [[rounds.messages]]
 role="system"
 content="""
@@ -564,7 +597,7 @@ You invited Professor Dagger into the storage room, the space still cluttered de
 Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you follow Professor Dagger into the unknown…
 
 {%- if memories %}
-Here are MEMROIES of the previous rounds:
+Round memories:
 {%- for memory in memories %}
 - {{memory}}
 {%- endfor %}
@@ -576,6 +609,7 @@ Here are the TRIGGERS of the round:
 - seeing the withered body will trigger a SANITY check at HARD difficulty
 - Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
 - After the withered body is awakened, it will chase after the player at break neck speed
+- If you accepted the middle-age woman's request, she will be on the other side of the locked door, and unlock the door for you.
 \"\"\"
 
 Here are the RULES of the round:
@@ -600,6 +634,16 @@ Here are the RULES of the round:
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
+{% if memories %}
+Memories:
+\"\"\"
+{%- for memory in memories %}
+- {{memory}}
+
+{%- endfor %}
+\"\"\"
+{% endif %}
+
 You invited Professor Dagger into the storage room, the space still cluttered despite your earlier attempt to clear some of the items out. The two of you began scouring through old furniture, leaving nothing unturned, yet, after two long hours, your hands held nothing but dust. You sensed the Professor’s eyes laced with disappointment, perhaps he has already given up the search, for to encounter a rare artifact like the one he described must require great deal of luck. But your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments that are hidden behind intricate mechanisms like the seance table. And as you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding across its surface gently like one would a body. Soon he senses the concealed mechanism that safeguards the secret shut, which upon a gentle press, unveils a dark corridor effluviating a pungent scent.
 
 Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you follow Professor Dagger into the unknown…
@@ -615,6 +659,7 @@ possible actions:
 # the extra informations for the game and message templates
 [metadata]
 game_name="Call of Cthulhu"
+memories=[]
 
 # character sheet infomations
 [metadata.character]
