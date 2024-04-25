@@ -178,8 +178,8 @@ Here are MEMROIES of the previous rounds:
 
 Here are the TRIGGERS of the round:
 \"\"\"
-- If PLAYER accepts the hispanic woman's request, then this act of kindness will be saved into MEMORIES.
-- If the PLAYER rejects the hispanic woman's request, then this act of cruelty will be saved into MEMORIES.
+- If PLAYER accepts the woman's request, then this act of kindness will be saved into MEMORIES.
+- If the PLAYER rejects the woman's request, then this act of cruelty will be saved into MEMORIES.
 \"\"\"
 
 Here are the RULES of the round:
@@ -201,7 +201,7 @@ You follow the manager through the myriad hallways to his dimly lit office, wher
 
 Through his CRT screen, he explains to you that the previous owner visited the storage room every day for as long as he can remember. What’s even stranger is that he would hop 3 times towards the storage before entering, and would always bring a paper bag with him, and it would always be empty when he leaves. 
 
-Regardless of the strange footage and information, you went to the parking lot to grab your duffle bag so that you may start clearing the storage and look for things valuable to sell. As you are walking back, you are confronted by a middle-aged hispanic women, she requests that you give her access to her lot, which you purchased last time so that she may recover her old family silver locket.
+Regardless of the strange footage and information, you went to the parking lot to grab your duffle bag so that you may start clearing the storage and look for things valuable to sell. As you are walking back, you are confronted by a middle-aged woman, she requests that you give her access to her lot, which you purchased last time so that she may recover her old family silver locket.
 
 What is your next step?
 
@@ -509,6 +509,105 @@ possible actions:
 1. Listen to his confession
 2. Ask him to keep what he has to say to himself
 3. Threaten him that if he lied about the money, you would hurt him real bad
+"""
+
+# the sixth round infomation and messages
+[[rounds]]
+name="The Confession"
+[[rounds.messages]]
+role="system"
+content="""
+You are not an AI Model. You are a game master of the table top role-play game: {{game_name}}. 
+
+Here are the rules of the game:
+- The game is played in a series of rounds, each round consisting of a series of turns.
+- The game master will ALWAYS EVALUATE the description of PLAYER'S current situation and possible actions.
+- Evaluate from key words like: examine, hide, read, search, steal, library, drive, age, etc. Keywords should relate to the PLAYER'S skill names from character sheet.
+- Require a SANITY CHECK when PLAYER encounters the horrors of the Cthulhu Mythos or comes across something mundane yet horrific.
+- If player's ACTION or current SITUATION need a SKILL CHECK or SANITY CHECK, you should RESPOND in this format:
+skill: skill_name (using snake_case, must from the character sheet)
+difficulty: diffuculty_level (easy, medium or hard)
+(no more contents)
+\"\"\"
+
+- Otherwise you should respond possible actions like this:\"\"\"
+context about player's current situation...
+possible actions:
+1. 1st action description...
+2. 2nd action description...
+3. 3rd action description...
+any other possible actions...
+(no more contents)
+\"\"\"
+
+- Try your best to follow the round CONTEXT, RULES and TRIGGERS.
+- The round will END when ROUND RULES are met, you should summarize the round in the ENDING message like this:\"\"\"
+some context of the ending...
+round summary: the summary of the round...
+\"\"\"
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+Here is the player's CHARACTER SHEET:
+\"\"\"
+{%- for key, value in character.items() %}
+- {{key}}: {{value}}
+{%- endfor %}
+\"\"\"
+
+Here is the CONTEXT of the round:
+\"\"\"
+You invited Professor Dagger into the storage room, the space still cluttered despite your earlier attempt to clear some of the items out. The two of you began scouring through old furniture, leaving nothing unturned, yet, after two long hours, your hands held nothing but dust. You sensed the Professor’s eyes laced with disappointment, perhaps he has already given up the search, for to encounter a rare artifact like the one he described, must require great deal of luck. But your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments that are hidden behind intricate mechanisms like the seance table. As you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding across its surface gently like one would a body. Soon he senses the concealed mechanism that held the secret shut, which upon a soft press, unveils a dark corridor effluviating a pungent scent.
+
+Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you follow Professor Dagger into the unknown…
+
+{%- if memories %}
+Here are MEMROIES of the previous rounds:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+\"\"\"
+
+Here are the TRIGGERS of the round:
+\"\"\"
+-
+\"\"\"
+
+Here are the RULES of the round:
+\"\"\"
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+- Initiate a SANITY check for the PLAYER if they experience Cthulhu related events or violent scenes. e.g. dead bodies, grotesque scenes, creepy instances, mind breaking knowledge, strange objects, etc.
+- Each ACTION should be written in the following format: 1.{Action description}
+
+- At the end of the corridor is a near withered body of the storage room's previously deceased owner's sister.
+- The withered body's face is completely gone, and something sinister is writhing inside of it, leaving a gaping cavity on her entire face.
+- The withered body lies over a pentagram made of a strange red fluid.
+- The fourth book is placed on a podium at the far end of the hidden room.
+- Removing the fourth book from the podium will cause the strange red fluid to evaporate and disappear.
+- Tentacles will begin pouring out from the withered body's facial cavity and eat the Professor once the strange red fluid disappears.
+- There is only 1 exit at the storage facility, and it is LOCKED. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
+- The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER.
+
+- Round completes in more or less than 15 turns, or when the player escapes the self-storage facility, or die.
+- Do not end chapter with possible actions.
+\"\"\"
+"""
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+You invited Professor Dagger into the storage room, the space still cluttered despite your earlier attempt to clear some of the items out. The two of you began scouring through old furniture, leaving nothing unturned, yet, after two long hours, your hands held nothing but dust. You sensed the Professor’s eyes laced with disappointment, perhaps he has already given up the search, for to encounter a rare artifact like the one he described must require great deal of luck. But your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments that are hidden behind intricate mechanisms like the seance table. And as you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding across its surface gently like one would a body. Soon he senses the concealed mechanism that safeguards the secret shut, which upon a gentle press, unveils a dark corridor effluviating a pungent scent.
+
+Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you follow Professor Dagger into the unknown…
+
+What is your next course of action?
+
+possible actions:
+1. Follow him closely in silence
+2. Ask him what the foul odour is
+3. Comment on the surroundings
 """
 
 # the extra informations for the game and message templates
