@@ -399,7 +399,7 @@ Here are the TRIGGERS of the round:
 - seeing the withered body will trigger a SANITY check at HARD difficulty
 - Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
 - After the withered body is awakened, it will chase after the player at break neck speed
-- Refer to memory, and if the PLAYER had assisted the middle-age woman, then she will leave the EXIT unlocked. If not, the door will remain locked. 
+- The player has a chance to roll luck at hard difficulty to determine if the EXIT is unlocked.
 \"\"\"
 
 Here are the RULES of the round:
