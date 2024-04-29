@@ -47,12 +47,10 @@ You are standing in front of the haunted mansion.
 The mansion is old and decrepit, with ivy growing up the walls and the windows boarded up. 
 The front door is slightly ajar, inviting you inside. 
 
-What do you do?
+Sunddenly you hear a loud crash from inside the mansion.
 
-possible actions:
-1. Enter the mansion.
-2. Take some photos of the mansion's exterior.
-3. Look around the building. (may need a spot hidden skill check)
+skill: sanity
+difficulty: easy
 """
 
 
@@ -66,20 +64,20 @@ Here are the rules of the game:
 - The game is played in a series of rounds, each round consisting of a series of turns.
 - You should carefully EVALUATE player's ACTION and other context to determine the outcome of the turn. 
 - The outcome is plain text message without any formatting.
-- If current situation needs a skill check, you should provide the player with 'skill' and 'difficulty(easy, normal, hard)': '''
+- If current situation needs a skill check, you should provide the player with 'skill' and 'difficulty': '''
 player: I want to open the locked door.
 game master:
-<start>
+<start of the message>
 You need to make a skill check to open the door.
 skill: lockpicking
-difficulty: hard
+difficulty: medium
 <end>
 ''' or '''
 game master:
 <start>
 A car is coming towards you, you need to make a skill check to dodge it.
 skill: dodge
-difficulty: normal
+difficulty: medium
 <end>
 '''
 - If current situation needs a decision, you should provide the player with 'possible actions': '''
@@ -93,33 +91,38 @@ possible actions:
 3. Ask about the guard's family
 <end>
 '''
-- You should hide the triggers of the round from the player and reveal it as the game progresses.
-- You should end the round when the player has completed their objective or when the round has reached its limit with 'summary': '''
-game master:
+- If player is insane, you should generate some horror visions of the scene: '''
+player: I failed with the sanity check, and I'm insane...
+game master: 
 <start>
-context of the round...
-summary: summary of the round...
+You see a vision of a dark figure standing in the corner of the room, watching you with glowing eyes.
+...
+possible actions:
+1. action based on the vision
+2. ...
+3. ...
 <end>
 '''
-- You should aways include the triggerd events in the 'summary'.
+- If player get shocked by something, you should ONLY ouput 'continue...' as possible actions: '''
+player: I'm shocked by the sudden appearance of the monster...
+game master: 
+<start>
+You are shocked and can't control yourself.
+possible actions:
+1. continue...
+<end>
+'''
+- You should include the triggered events in the 'summary'.
 """
-symptom=[
-    "incoherent speech",
-    "uncontrollable twitching, trembling",
-    "delusions of persecution",
-    "strange appetites (dirt, clay, etc...)",
-    "scratches, punches, and bruises all over the body"
-    ]
+
 # character sheet infomations
 [metadata.character]
-sanity=60
+sanity=10 # for test
 name="Jone Doe"
 age="32"
 birthplace="Arkham"
 residence="New York"
 occupation="Journalist"
 backstory="""
-John Doe is a journalist who has been investigating the mysterious disappearances in Arkham.
-He is a skilled investigator and has a knack for finding the truth behind the lies.
+You are an ex-marine who served during the initial phases of the Afghan war, but stopped serving after your unit was wiped out by an IED. Although you survived without any severe or life altering physical injuries, the incident plagued you with Tinnitus and PTSD. Its effects gradually consume all you hold dear in your life, work, wife, kids, and even a good night's rest. Now you scrape by life with what little you have left, knee deep in debt, living life a day at a time. A year ago, you started trying out your luck at abandoned self-storages, making bets on whatever self-storages were given up by their owners due to eviction or death. So far, it has kept you afloat, but the previous purchase did not come close to cover the cost of purchasing the storage.
 """
-
