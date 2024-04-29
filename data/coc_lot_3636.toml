@@ -505,6 +505,9 @@ symptom=[
     "scratches, punches, and bruises all over the body"
     ]
 
+# the extra informations for the game and message templates
+memories=[]
+
 # character sheet infomations
 [metadata.character]
 sanity=10 # for test
