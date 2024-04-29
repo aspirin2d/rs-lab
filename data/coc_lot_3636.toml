@@ -399,7 +399,8 @@ Here are the TRIGGERS of the round:
 - seeing the withered body will trigger a SANITY check at HARD difficulty
 - Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
 - After the withered body is awakened, it will chase after the player at break neck speed
-- If you accepted the middle-age woman's request, she will be on the other side of the locked door, and unlock the door for you.
+- If the PLAYER previously allowed the middle-age woman to search for her locket, then she will be outside the facility and is willing to unlock the door for you.
+- If the PLAYER had previously rejected the middle-age woman, then she will leave them locked behind the doors and watch them fight the withered body.
 \"\"\"
 
 Here are the RULES of the round:
@@ -505,7 +506,6 @@ symptom=[
     "scratches, punches, and bruises all over the body"
     ]
 
-# the extra informations for the game and message templates
 memories=[]
 
 # character sheet infomations
