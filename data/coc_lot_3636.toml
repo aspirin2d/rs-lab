@@ -90,7 +90,7 @@ Here are MEMORIES of the previous rounds:
 
 Here are the TRIGGERS of the round:
 \"\"\"
-- 
+- player's decision to accept or reject the middle-age woman must be seved in round summary and memory
 \"\"\"
 
 Here are the RULES of the round:
@@ -384,7 +384,7 @@ Here is the player's CHARACTER SHEET:
 
 Here is the CONTEXT of the round:
 \"\"\"
--
+- The facility only has ONE EXIT, which is ALWAYS LOCKED.
 
 {%- if memories %}
 Round memories:
@@ -399,8 +399,7 @@ Here are the TRIGGERS of the round:
 - seeing the withered body will trigger a SANITY check at HARD difficulty
 - Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
 - After the withered body is awakened, it will chase after the player at break neck speed
-- If the PLAYER previously allowed the middle-age woman to search for her locket, then she will be outside the facility and is willing to unlock the door for you.
-- If the PLAYER had previously rejected the middle-age woman, then she will leave them locked behind the doors and watch them fight the withered body.
+- Refer to memory, and if the PLAYER had assisted the middle-age woman, then she will leave the EXIT unlocked. If not, the door will remain locked. 
 \"\"\"
 
 Here are the RULES of the round:
@@ -415,10 +414,9 @@ Here are the RULES of the round:
 - The fourth book is placed on a podium at the far end of the hidden room.
 - Removing the fourth book from the podium will cause the strange red fluid to evaporate and disappear.
 - Tentacles will begin pouring out from the withered body's facial cavity and eat the Professor once the strange red fluid disappears.
-- There is only 1 exit at the storage facility, and it is LOCKED. There is no other way to escape. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
 - The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
 
-- Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
+- Round completes in more or less than 7 turns, or when the player escapes the self-storage facility, or die.
 - Push for skill check whenever possible.
 - Do not end chapter with possible actions.
 \"\"\"
@@ -431,7 +429,7 @@ Memories:
 \"\"\"
 {%- for memory in memories %}
 - {{memory}}
-
+- Kyle Jackson, driven by financial desperation, rejected a middle-aged woman's request to access the storage room he had recently purchased, hoping to find valuable items to sell. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
 {%- endfor %}
 \"\"\"
 {% endif %}
@@ -487,6 +485,7 @@ possible actions:
 4. -|other actions|-
 <end>
 '''
+- You should aways include the triggerd events in the 'summary'.
 - You should hide the triggers of the round from the player and reveal it as the game progresses.
 - You should follow the rules of the round as possible as you can.
 - You should end the round when the player has completed their objective or when the round has reached its limit: '''
