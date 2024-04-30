@@ -269,11 +269,11 @@ Memories:
 \"\"\"
 {% endif %}
 
-The manager hands you some gauze and a bottle of rubbing alcohol as the blood drips down the sink while you clean yourself up in the restroom. You focus on the stinging pain of the alcohol on your cut lips, reminding you how unfair life could be, and that life would relentlessly beat men like you down until your spirit breaks. Yet, the pain simultaneously fuels your will to survive, to live on, a chance that the people you fought in the Afghan war never had. In a way, you live on for their sake, trying to be grateful despite the hardship that has plagued you ever since your honorable discharge. 
+The manager hands you some gauze and a bottle of rubbing alcohol as the blood drips down the sink while you clean yourself up in the restroom. You focus on the stinging pain of the alcohol on your cut lips, reminding you how unfair life could be, and that life would relentlessly beat men like you down until your spirit breaks.
 
-You stared long and hard at yourself in the mirror before closing the wound with a closure strip and covered it with another layer of gauze. The manager, sympathetic to your predicament, recommended you to a dealer that specializes in collecting esoteric and abstruse items. You felt insulted by his act of pity, but reluctantly agreed as you weighed your current situation to your pride. 
+You stared long and hard at yourself in the mirror before closing the wound with a closure strip and covered it with another layer of gauze. The manager, sympathetic to your predicament, recommended you to a dealer that specializes in collecting esoteric and abstruse items. 
 
-You make your way to the address given by the self-storage facility manager, and soon find yourself in a Victorian style house. Although the sun had set, the glow of the incandescent porch light revealed the house’s burgundy coloured exterior with black accent. As you roll up to the front porch, Ms. Blackwell, the aforementioned dealer greets you with a restrained annoyance. But you couldn’t be bothered by her attitude, such is the norm of most dealers you have met with, rarely do they find an item of great value after all. 
+You make your way to the address given by the self-storage facility manager, and soon find yourself in a Victorian style house. As you roll up to the front porch, Ms. Blackwell, the aforementioned dealer greets you with a restrained annoyance.
 
 She invites you to bring your peculiar objects to your personal library, its walls filled with books you have never seen or heard before. You placed the round wooden block on the table, along with the objects in your duffle bag, and...
 
@@ -347,13 +347,14 @@ Memories:
 \"\"\"
 {% endif %}
 
-Professor Dagger examines the seance table with utmost concentration and scrutiny, being as careful as possible to not inflict any damage to the table. He then shifted his attention to the three leather bound books, inspecting its condition while flipping through its contents to verify its authenticity. 
+Professor Dagger examines the seance table and the three leather bound books with utmost concentration and scrutiny, being as careful as possible to not inflict any damage to the items.
 
-After much inspection, he turned his attention towards you, and inquired about a fourth book, expressing that altogether, it could fetch a price well above $2,000,000. Your eyes lit up, recognizing this to be your chance to turn your life around, pay off your debts and perhaps start something by yourself. The mystery of the fourth book piqued your interest despite the disinterest in the occult, and such curiosity beckoned you to ask about the importance of the fourth book. A heavy silence ensued, the Professor’s shadowy face under the chandelier’s soft  glow gazed into your eyes with great earnestness. In a somber tone, he explained that the fourth book is the rarest of them all, for it allows its user to bind a demon to the material world, to earth. And the moment the transaction is complete, the book would self combust to a pile of ash unless the demon has been betrayed and unable to collect its debt, thus explaining the price of the book. 
+The Professor, in a somber tone, inquired about a fourth book, which is the rarest of them all, for it allows the user to bind a demon to the material world, to earth. But it would burst in flames after the transaction is complete, unless the Demon has been betrayed and unable to collect its debt. He concludes, altogether, along with the fourth book, these items could fetch a price well above $2,000,000. Your eyes lit up, recognizing this to be your chance to turn your life around, pay off your debts and perhaps start something by yourself.
 
-You hastily explain your recently acquired storage, and how you still haven’t had the opportunity to thoroughly examine every item, suggesting its possible location. Professor Dagger offered to search the storage room alongside you, and if the fourth book is found, he will write you a $2,000,000 cheque immediately. 
+You informed him that you found all the items in the recently acquired storage room, and suggested to the Professor that the fourth book may be misplaced in the storage. The Professor offered to help you search for the fourth book, hoping to move things along quicker.
 
 You quickly load everything back onto your truck, and with Professor Dagger in the passenger seat, the two of you make way towards the self-storage facility. On your way there, the Professor informed you that he has a confession to make.
+
 
 How do you respond?
 
@@ -384,7 +385,7 @@ Here is the player's CHARACTER SHEET:
 
 Here is the CONTEXT of the round:
 \"\"\"
--
+- There is only one EXIT, and it is always locked.
 
 {%- if memories %}
 Round memories:
@@ -399,8 +400,6 @@ Here are the TRIGGERS of the round:
 - seeing the withered body will trigger a SANITY check at HARD difficulty
 - Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
 - After the withered body is awakened, it will chase after the player at break neck speed
-- If the PLAYER previously allowed the middle-age woman to search for her locket, then she will be outside the facility and is willing to unlock the door for you.
-- If the PLAYER had previously rejected the middle-age woman, then she will ALWAYS leave them locked behind the doors and watch them fight the withered body.
 \"\"\"
 
 Here are the RULES of the round:
@@ -418,6 +417,7 @@ Here are the RULES of the round:
 - There is only 1 exit at the storage facility, and it is LOCKED. There is no other way to escape. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
 - Do not reveal the presence of the middle-age woman to the player.
 - The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
+- Refer to PLAYER's memories and determine the punishment for the PLAYER from the follow: did they player accept or reject the middle-age woman's request.
 
 - Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
 - Push for skill check whenever possible.
@@ -437,9 +437,10 @@ Memories:
 \"\"\"
 {% endif %}
 
-You invited Professor Dagger into the storage room, the space still cluttered despite your earlier attempt to clear some of the items out. The two of you began scouring through old furniture, leaving nothing unturned, yet, after two long hours, your hands held nothing but dust. You sensed the Professor’s eyes laced with disappointment, perhaps he has already given up the search, for to encounter a rare artifact like the one he described must require great deal of luck. But your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments that are hidden behind intricate mechanisms like the seance table. And as you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding across its surface gently like one would a body. Soon he senses the concealed mechanism that safeguards the secret shut, which upon a gentle press, unveils a dark corridor effluviating a pungent scent.
+You invited Professor Dagger into the storage room, and the two of you began scouring through old furniture, leaving nothing unturned, yet, after two long hours, your hands held nothing but dust. You sensed the Professor’s eyes laced with disappointment, perhaps he has already given up the search, but your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments that are hidden behind intricate mechanisms like the seance table. As you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding across its surface gently like one would a body. Soon he senses the concealed mechanism that held the secret shut, which upon a soft press, unveils a dark corridor effluviating a pungent scent.
 
 Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you follow Professor Dagger into the unknown…
+
 
 What is your next course of action?
 
