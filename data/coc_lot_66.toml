@@ -306,7 +306,7 @@ Here is the player's CHARACTER SHEET:
 
 Here is the CONTEXT of the round:
 \"\"\"
--
+- the fourth book is not here.
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -385,7 +385,8 @@ Here is the player's CHARACTER SHEET:
 
 Here is the CONTEXT of the round:
 \"\"\"
-- There is only one EXIT, and it is always locked.
+- there is only one EXIT.
+- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
 
 {%- if memories %}
 Round memories:
@@ -399,7 +400,8 @@ Here are the TRIGGERS of the round:
 \"\"\"
 - seeing the withered body will trigger a SANITY check at HARD difficulty
 - Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
-- After the withered body is awakened, it will chase after the player at break neck speed
+- After the withered body is awakened, it will chase after the player at break neck speed.
+- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
 \"\"\"
 
 Here are the RULES of the round:
@@ -417,7 +419,7 @@ Here are the RULES of the round:
 - There is only 1 exit at the storage facility, and it is LOCKED. There is no other way to escape. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
 - Do not reveal the presence of the middle-age woman to the player.
 - The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
-- Refer to PLAYER's memories and determine the punishment for the PLAYER from the follow: did they player accept or reject the middle-age woman's request.
+- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request. If accepted, then the exit is unlocked. Vice versa.
 
 - Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
 - Push for skill check whenever possible.
@@ -432,7 +434,7 @@ Memories:
 \"\"\"
 {%- for memory in memories %}
 - {{memory}}
-- Kyle Jackson, driven by financial desperation, rejected a middle-aged woman's request to access the storage room he had recently purchased, hoping to find valuable items to sell. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
+- Kyle Jackson, despite your financial desperation, you accepted a middle-aged woman's request to access the storage room heyou had recently purchased. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
 {%- endfor %}
 \"\"\"
 {% endif %}
