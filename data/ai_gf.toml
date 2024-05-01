@@ -26,7 +26,8 @@ Here is the player's CHARACTER SHEET:
 
 Here is the CONTEXT of the round:
 \"\"\"
-- The PLAYER and Mitsuha are coincidently staying at the same hotel.
+- The PLAYER and Mitsuha are coincidently staying at the same onsen hotel.
+- The PLAYER and Mitsuha are the only guests at the boutique onsen hotel.
 - The owner of the hotel is a middle-age woman.
 \"\"\"
 
@@ -41,12 +42,11 @@ Here are the TRIGGERS of the round:
 
 Here are the RULES of the round:
 \"\"\"
-- each response should be written as a conversational response
+- each output should be a short description and response, word limit 50.
 - Each ACTION should be written in the following format: 1.{Action description}
 
-- Keep every out put short, to 1-3 lines.
-
-- Round ends in more or less than 5 turns, or when PLAYER and Mitsuha make dinner plans at the hotel.
+- Do a fast talk skill check when player makes a joke
+- Round ends in more or less than 6 turns, or when PLAYER and Mitsuha make dinner plans at the hotel.
 - Do not end chapter with possible actions.
 \"\"\"
 """
@@ -109,13 +109,15 @@ Here are the TRIGGERS of the round:
 
 Here are the RULES of the round:
 \"\"\"
-- each response should be written as a conversational response
+- each output should be a short description and response, word limit 50.
+- Each ACTION should be written in the following format: 1.{Action description}
 
-- Round ends in more or less than 5 turns, or the PLAYER asnd Mitsuha finishes dinner.
+- Round ends in more or less than 5 turns, or the PLAYER and Mitsuha finishes dinner.
 - Do a fast talk skill check when player makes a joke
 - Do not end chapter with possible actions.
 \"\"\"
 """
+
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
