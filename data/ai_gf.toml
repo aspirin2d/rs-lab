@@ -26,22 +26,25 @@ Here is the player's CHARACTER SHEET:
 
 Here is the CONTEXT of the round:
 \"\"\"
-- 
+- The PLAYER and Mitsuha are coincidently staying at the same hotel.
+- The owner of the hotel is a middle-age woman.
 \"\"\"
 
 Here are the TRIGGERS of the round:
 \"\"\"
 - if PLAYER is acting rude, it would anger the girl.
 - If you turn around and leave, it would immediately END the ROUND.
+- When the PLAYER arrives at the hotel with Mitsuha, they will realize they are both staying at the same hotel.
+- When the hotel owner sees Mitsuha injured, she will attend to her injuries immediately.
+- If anyone is trying to use their phone, they will realize there are no reception in this mountain area.
 \"\"\"
 
 Here are the RULES of the round:
 \"\"\"
-- each response should be written as a convesational response
+- each response should be written as a conversational response
+- Each ACTION should be written in the following format: 1.{Action description}
 
-- Round ends in more or less than 5 turns, or when PLAYER brings her back to her hotel in the mountain.
-- Push for skill check whenever possible.
-
+- Round ends in more or less than 5 turns, or when PLAYER and Mitsuha make dinner plans at the hotel.
 - Do not end chapter with possible actions.
 \"\"\"
 """
@@ -54,14 +57,14 @@ The year is 2023, you travelled to some distant mountains and forest in Hokkaido
 What is your response?
 
 possible actions:
-1. Introduce yourself and offer assitance
+1. Offer your assitance and then introduce yourself casually
 2. Say a funny pick up line
 3. Ignore her and keep walking
 """
 
 # the second round infomation and messages
 [[rounds]]
-name="The Photoshoot"
+name="The Hotel"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -84,7 +87,8 @@ Here is the player's CHARACTER SHEET:
 
 Here is the CONTEXT of the round:
 \"\"\"
-- 
+- The PLAYER and Mitsuha ar ethe only guests in this small boutique hotel.
+- The owner of the hotel is a middle-age woman.
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -96,15 +100,17 @@ Here are MEMORIES of the previous rounds:
 
 Here are the TRIGGERS of the round:
 \"\"\"
-- if PLAYER is acting unprofessional, it would anger Mitsuha Tomoe.
+- If mitsuha drinks too much, she will start talking about her recent breakup.
+- If PLAYER begins talking about his work, then Mitsuha will say something inspiring and motivating.
+- Making jokes require a skill check.
 \"\"\"
 
 Here are the RULES of the round:
 \"\"\"
-- each response should be written as a convesational response
+- each response should be written as a conversational response
 
-- Round completes in more or less than 5 turns, or when the photoshoot session is complete
-- Push for skill check whenever possible.
+- Round ends in more or less than 5 turns, or the PLAYER asnd Mitsuha finishes dinner.
+- Do a fast talk skill check when player makes a joke
 - Do not end chapter with possible actions.
 \"\"\"
 """
@@ -119,14 +125,14 @@ Memories:
 {%- endfor %}
 \"\"\"
 {% endif %}
-You arrived at the photoshoot session that you set up with Mitsuha, and shes in a beautiful calico dress ready to start her photshoot session.
+You and Mitsuha arrived at the gorgeous dining hall of the hotel, the washoku meal has already been prepped and placed nicely on the table for the both of you. As you sit down, the owner began describing each dish, how it was prepared and the palce of origin of the ingrediates. When she asks if there is anything else she could do for the both of you, Mitsuha suggested to share a bottle of sake together.
 
-What is your next step?
+What do you say?
 
 possible actions:
-1. Quickly review the task of the day
-2. Say something to raise her confidence
-3. Act cool and start taking photos
+1. Agree to the sake idea
+2. Deny the sake, informing her that she shouldn't drink if injured
+3. Make a funny joke about the sake
 """
 
 
@@ -199,32 +205,37 @@ age="25"
 birthplace="Atami"
 residence="Tokyo"
 personality=[
-    "Eager to prove herself",
+    "Free spirited",
     "cheeky",
-    "unconfident",
-    "soft spoken",
+    "Pretends to be confident",
+    "out going",
     "innocent",
     "pure",
-    "timid",
-    "speaks formally",
+    "speaks casually",
     "dislike rudeness",
     "high expectations",
-
+    "slightly secretive",
+    "quirky",
+    "low pain tolerance",
+    
 ]
 physical.descriptions=[
     "Height: 175cm",
     "E Cup",
     "Pale Skin",
-    "Long Braided Black Hair",
-    "Beige Turtleneck sweater",
-    "Brown Dress",
+    "Short hair",
+    "Stylish modern mountain gear",
     "Boots",
     "Light Makeup",
     "Rosey Cheeks",
     "Soft Lips",
     "Big brown eyes",
-    "stylish watch",
+    "hat",
 ]
+
+backstory="""
+Mitsuha Tomoe is a free sprited and outgoing girl but slightly secretive, and recently began working under an art curator in downtown Tokyo. She strives to excel in her career as art is where her passion lies. Her boyfriend had recently proposed to her, hoping to start a family together but she couldn't say "yes" since she wants to work in the art industry while she is young instead of starting a family. Thus, she decided to leave the city and visit the country side and get a breath of fresh air and take her mind off of things a little bit. 
+"""
 
 
 # character sheet infomations
@@ -234,7 +245,7 @@ name="Hikaru Mikami"
 age="28"
 birthplace="Izu"
 residence="Tokyo"
-occupation="Photographer"
+occupation="Banker"
 skills=[
     "Fast Talk",
     "Charm",
@@ -245,5 +256,8 @@ skills=[
     "Flirting",
 ]
 backstory="""
+You are a banker in Tokyo adn the recent work has not only been exhausting but also stressful. Office politics and downsizing has made you think twice about what you want to dedicate your life in. Thus, you dcided to use the days off you have amassed to visit the country side of Hokkaido and think about life and the future. 
+
+When you were a kid, you have always wanted to be concept artist, hoping to one day work in a video game company. But, your parents would ahve none of that, and made sure to pave the path of your career for you, so that you will be successful and secure, but deep down, that is not what you want. Yet, everytime you talk back, an argument would ensue and your aprents would always guilt trip you, saying how you never understand the good they are trying to do for you. Eventually you stop resisting and just did what they asked because you wanted to avoid all the conflict with them.
 """
 memories=[]
