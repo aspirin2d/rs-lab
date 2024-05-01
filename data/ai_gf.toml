@@ -186,6 +186,8 @@ possible actions:
 3. ...
 <end>
 '''
+
+- You should end the round when the player has completed their objective or when the round has reached its limit with 'summary':
 - If player get shocked by something, you should ONLY ouput 'continue...' as possible actions: '''
 player: I'm shocked by the sudden appearance of the monster...
 game master: 
