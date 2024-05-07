@@ -1,182 +1,125 @@
 # general config file for the project
 version="0.0.2"
-
-# system message which provides the game rules
-[[messages]]
-role="system"
-content="""
-You are not an AI Model. You are a game master of the table top role-play game: {{game_name}}. 
-
-Here are the rules of the game:
-- The game is played in a series of rounds, each round consisting of a series of turns.
-
-- You should EVALUATE player's ACTION, if the ACTION needs a skill check, then respond like this:\"\"\"
-some context about the skill check...
-skill: skill_name (using snake_case, must be included in the character sheet)
-difficulty: diffuculty_level (easy, medium or hard)
-(no more ouput)
-\"\"\"
-
-- Otherwise you should respond like this:\"\"\"
-some context about player's current situation...
-possible actions:
-1. 1st action description...
-2. 2nd action description...(may need a skill check)
-3. 3rd action description...
-any other possible actions...
-\"\"\"
-
-- Try your best to follow the round CONTEXT, RULES and TRIGGERS.
-- If the round is the FINAL round, you should summerize  the whole story in the ENDING message WITHOUT actions like this:\"\"\"
-some context of the whole story based on all previous rounds...
-ending summary: the summary of the whole story...
-\"\"\"
-
-- Otherwise, you should end the round with the ENDING message WITHOUT actions like this:\"\"\"
-some context of the round...
-round summary: the summary of the round...
-\"\"\"
-"""
-
 # the first round infomation and messages
 [[rounds]]
 name="The Haunted Mansion"
-[[rounds.messages]] # system message which provides the round context
-role="assistant"
+video="/albums/lot36_1.mp4"
+
+[[rounds.messages]] # system rules
+role="system"
 content="""
-Here is the player's CHARACTER SHEET:
-\"\"\"
-{%- for key, value in character.items() %}
-- {{key}}: {{value}}
-{%- endfor %}
-\"\"\"
-
-Here is the CONTEXT of the round:
-\"\"\"
-- You have been hired by a wealthy businessman to investigate a haunted mansion in the outskirts of Arkham.
-- The mansion is said to be cursed and anyone who enters it never returns.
-- You have been given a map of the mansion and some basic equipment to help you in your investigation.
-- Your goal is to find out the truth behind the curse and put an end to it.
-\"\"\"
-
-Here are the TRIGGERS of the round:
-\"\"\"
-- "When you enter the dining room, you will see a scary dog running through the room.(this may trigger a sanity check)",
-\"\"\"
-
-Here are the RULES of the round:
-\"\"\"
-- The round will END in 5 TURNS or player enter the basement of the mansion.
-- When the round ends, PLAYER should heard a scary sound from the basement of the mansion.
-\"\"\"
-"""
-[[rounds.messages]] # initial message to start the round
-role="assistant"
-content="""
-You are standing in front of the haunted mansion. 
-The mansion is old and decrepit, with ivy growing up the walls and the windows boarded up. 
-The front door is slightly ajar, inviting you inside. 
-
-What do you do?
-
-possible actions:
-1. Enter the mansion.
-2. Take some photos of the mansion's exterior.
-3. Talk to the butler. (may need a persuasion skill check)
+{{system_rules}}
 """
 
-# the second round infomation and messages
-[[rounds]]
-name="The scary basement"
 [[rounds.messages]] # system message which provides the round context
 role="system"
 content="""
-Here is the player's CHARACTER SHEET:
+{%- if character %}
+Here is the player's information:
 \"\"\"
-{%- for key, value in character.items() %}
-- {{key}}: {{value}}
-{%- endfor %}
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
 \"\"\"
-
-Here is the CONTEXT of the round:
-\"\"\"
-- You have been hired by a wealthy businessman to investigate a haunted mansion in the outskirts of Arkham.
-- The mansion is said to be cursed and anyone who enters it never returns.
-- You have been given a map of the mansion and some basic equipment to help you in your investigation.
-- Your goal is to find out the truth behind the curse and put an end to it.
-
-{%- if memories %}
-Here are MEMROIES of the previous rounds:
-{%- for memory in memories %}
-- {{memory}}
-{%- endfor %}
 {%- endif %}
-\"\"\"
 
 Here are the TRIGGERS of the round:
-\"\"\"
-- When you enter the basement, you will encounter a statue of a strange creature.
-- If you touch the statue, you will hear a voice whispering in your ear.
-\"\"\"
+'''
+- When player entering the dining room, a big scary dog will run across the room. Player need a 'dodge' skill check to avoid it.
+- The upstairs of the mansion is blocked by a fallen ceiling. Player need a 'strength' skill check to move the debris.
+'''
 
 Here are the RULES of the round:
-\"\"\"
-- The round will END in 5 TURNS or player leave the basement of the mansion.
-- This is the final round, when the round ends, PLAYER should met a old woman in the exit of the basement.
-\"\"\"
+'''
+- This round must end within 5 turns, or player find a way to the basement.
+- When the round ends, PLAYER will heard a scary sound from the basement of the mansion.
+'''
 """
+
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-You decide to check the basement of the mansion, where the sounds seem to be coming from.
-
-possible actions:
-1. Enter the basement.
-2. Take some photos of the basement's entrance.
-3. Listen at the door of the basement. (may need a listen skill check)
+context: Now, you are standing in front of the haunted mansion. 
+The mansion is old and decrepit, with ivy growing up the walls and the windows boarded up. 
+The front door is slightly ajar, inviting you inside...
+actions:
+1. Enter the mansion.
+2. Take some photos of the mansion's exterior.
+3. Look around the building.
 """
+
 
 # the extra informations for the game and message templates
-[meta]
+[metadata]
 game_name="Call of Cthulhu"
+system_rules="""
+You are not an AI Model. You are a game master of the table top role-play game: 'Call of Cthulhu'. 
 
-# character sheet infomations
-[meta.character]
-name="Jone Doe"
-age="32"
-birthplace="Arkham"
-residence="New York"
-occupation="Journalist"
-skills=[
-    "photography",
-    "persuasion",
-    "stealth",
-    "dodge",
-    "accounting",
-    "appraise",
-    "archaeology",
-    "charm",
-    "climb",
-    "disguise",
-    "drive_auto",
-    "brawl",
-    "first_aid",
-    "intimidate",
-    "library_use",
-    "listen",
-    "psychology",
-    "stealth",
-    "strength",
-    "dexterity",
-    "intelligence",
-    "constitution",
-    "appearance",
-    "education",
-    "size",
-    "power",
-    "luck"
-]
-backstory="""
-John Doe is a journalist who has been investigating the mysterious disappearances in Arkham.
-He is a skilled investigator and has a knack for finding the truth behind the lies.
+Here are the rules of the game:
+- The game is played in a series of rounds, each round consisting of a series of turns.
+- In each turn, you should carefully EVALUATE player's ACTION and other context to determine the outcome of the turn. 
+- Your outcome must starts with: '''context:...''', and context should always be within 60 words.
+- If current situation needs a decision, you should provide the player with 3 actions: '''
+context: <context within 60 words...>
+actions:
+1. <action one...>
+2. <action two...>
+3. <action three...>
+'''
+- Action MUST be within 10 words.
+- If current situation or player's action needs a skill check, you should provide the player with 'skill' and 'difficulty(normal, hard, extreme)': '''
+context: <context within 60 words...>
+skill: <skill_name> 
+difficulty: <normal|hard|extreme>
+'''
+- You must always HIDE the triggers and the rules of the round from the player.
+- You should follow the TRIGGERS and RULES of the round as possible as you can.
+- You should end the round according to the RULES, and provide a summary for player: '''
+context: <context within 60 words...>
+summary: <summary of the round...>
+'''
+- You should always include the triggerd events in the 'summary'.
+'''
 """
+# character sheet for the player
+[metadata.character]
+name="Harvey Walters"
+sex="male"
+age="32"
+birthplace="Boston"
+residence="New York City"
+occupation="Veteran"
+
+[metadata.character.status]
+hit_points=15
+sanity=45
+luck=45
+magic_points=9
+
+[metadata.character.characteristics]
+strength=20
+constitution=70
+size=80
+dexerity=55
+appearance=80
+intelligence=85
+power=45
+education=84
+move=6
+
+[metadata.character.skills]
+archaeology=80
+photography=25
+credit_rating=41
+dodge=27
+fighting=25
+'language_other(latin)'=55
+'language_own(english)'=84
+law=62
+library_use=55
+listen=45
+occult=30
+persuade=70
+pilot=50
+psychology=65
