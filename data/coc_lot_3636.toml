@@ -18,6 +18,7 @@ Here is the player's CHARACTER SHEET:
 {%- for key, value in character.items() %}
 - {{key}}: {{value}}
 {%- endfor %}
+
 \"\"\"
 
 Here is the CONTEXT of the round:

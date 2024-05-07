@@ -250,12 +250,11 @@ residence="Tokyo"
 occupation="Banker"
 skills=[
     "Fast Talk",
-    "Charm",
-    "Seduce",
-    "Acting",
-    "Kissing",
-    "Driving",
-    "Flirting",
+    "Wit",
+    "Strength",
+    "Intelligence",
+    "Knowledge",
+    "Luck",
 ]
 backstory="""
 You are a banker in Tokyo adn the recent work has not only been exhausting but also stressful. Office politics and downsizing has made you think twice about what you want to dedicate your life in. Thus, you dcided to use the days off you have amassed to visit the country side of Hokkaido and think about life and the future. 
