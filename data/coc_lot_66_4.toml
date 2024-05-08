@@ -185,6 +185,7 @@ Here are the TRIGGERS of the round:
 
 Here are the RULES of the round:
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+- The PLAYER has no knowledge on how the table is used.
 - Round will ends in 5 turns, or when the player returns to his truck with the round wooden block.
 """
 [[rounds.messages]] # initial message to start the round
@@ -226,12 +227,11 @@ Here are MEMORIES of the previous rounds:
 {%- endif %}
 
 Here are the TRIGGERS of the round:
-- Initiate a FIGHTING skill check at HARD difficulty when there is combat.
+- Initiate a FIGHTING skill check at extreme difficulty when there is combat.
 - If PLAYER is about to beat ALEX in a fight, then he would pull out a handgun.
 
 Here are the RULES of the round:
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
-- Initiate other skill check if it is appropriate.
 - ALEX will always win the fight, but will NOT kill the PLAYER.
 - ALEX will warn the PLAYER to PAY HIM BACK TOMORROW after he wins the fight.
 - ALEX is very aggressive and will beat the PLAYER regardless of their response.
@@ -248,9 +248,9 @@ actions:
 3. Begin verbally assaulting him
 """
 
-# the fourth round infomation and messages
+# the sixth round infomation and messages
 [[rounds]]
-name="The Professor"
+name="The Pain"
 video="/albums/lot36_4.mp4"
 [[rounds.messages]] # system rules
 role="system"
@@ -270,7 +270,59 @@ Here is the player's information:
 {%- endif %}
 
 Here is the CONTEXT of the round:
-- initiate occult skill check when it is relevant. 
+- The dealer is a woman.
+- The manager will be sympathetic to your predicament.
+- Whether or not you close the wound, the manager will enter the bathroom.
+
+{%- if memories %}
+Here are MEMORIES of the previous rounds:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+
+Here are the TRIGGERS of the round:
+- Initiate FIRST AID check when closing the wound.
+- The manager will always knock on the bathroom door and give you an address to a dealer that specializes in dealing with the esoteric and abtruse items after you close your wounds or scream.
+- If the PLAYER breaks the bathroom mirror, the manager will immediately scream at the player and commands them to calm down.
+
+Here are the RULES of the round:
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+- Round completes in more or less than 4 turns, or after the manager gives PLAYER the address to the dealer.
+"""
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context: The manager hands you some gauze and a bottle of rubbing alcohol as you clean yourself up in the restroom. You focus on the stinging pain of alcohol on your cut lips, reminding yourself how unfair life is, and would relentlessly beat any man down. You... 
+actions:
+1. Close the wound with a closure strip
+2. Smash the mirror with a punch
+3. Scream in anger
+"""
+
+# the seventh round infomation and messages
+[[rounds]]
+name="The Money"
+video="/albums/lot36_4.mp4"
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+{%- endif %}
+
+Here is the CONTEXT of the round:
+-  
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -289,16 +341,11 @@ Here are the RULES of the round:
 - Ms. Blackwell will unveil the hidden compartment built within the SEANCE TABLE.
 - Ms. Blackwell will invite Professor Dagger, a potential buyer to view the SEANCE TABLE.
 - Round completes in more or less than 2 turns, or immediately after the arrival of Professor Dagger.
-- Do not end chapter with actions.
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-The manager hands you some gauze and a bottle of rubbing alcohol as you clean yourself up in the restroom. You focus on the stinging pain of alcohol on your cut lips, reminding yourself how unfair life is, and would relentlessly beat any man down.
-
-You stare long and hard at yourself in the mirror before closing the wound with a closure strip. The manager, sympathetic to your predicament, introduces you to a dealer that specializes in collecting esoteric and abstruse items. 
-
-You make your way to the address given by the self-storage facility manager, and soon find yourself before a Victorian style house. As you roll up to the front porch, Ms. Blackwell, the aforementioned dealer greets you courteously with eyes brimming with excitement.
+context: You make your way to the address given by the self-storage facility manager, and soon find yourself before a Victorian style house. As you roll up to the front porch, Ms. Blackwell, the aforementioned dealer greets you courteously with eyes brimming with excitement. It seems the manager notified her on your behalf.
 
 She invites you to bring your peculiar objects to her personal library, and place it on the table for her to begin appraising. And you...
 
@@ -308,9 +355,9 @@ actions:
 3. Ask if she has seen something similar before
 """
 
-# the fifth round infomation and messages
+# the eighth round infomation and messages
 [[rounds]]
-name="The Confession"
+name="The Occult"
 video="/albums/lot36_5.mp4"
 [[rounds.messages]] # system rules
 role="system"
@@ -333,7 +380,68 @@ Here is the player's information:
 
 Here is the CONTEXT of the round:
 \"\"\"
-- the fourth book is not here.
+- The fourth book is not here.
+- The fourth book is the rarest of them all. For the book allows the user to bind a demon to the material world, to earth, but it would burst in flames afterwards, unless the Demon has been betrayed.
+- The fourth book is a legendary item.
+- Altogether with the fourth book, could fetch a price well above $2,000,000.
+
+{%- if memories %}
+Here are MEMORIES of the previous rounds:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+\"\"\"
+
+Here are the TRIGGERS of the round:
+\"\"\"
+- Professor Dagger will explain the importance of the fourth book
+- Before the end of the round, the PLAYER will explain how they had just acquired the item from the self-storage they had bid for and the fourth book may still be in the storage room.
+- Professor Dagger will always insist on going back to the storage facility with you to find the book.
+\"\"\"
+
+Here are the RULES of the round:
+\"\"\"
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+- Round completes in more or less than 4 turns, or when the player leaves the facility with Professor Dagger
+\"\"\"
+"""
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context: Professor Dagger examines the seance table and the three leather bound books with utmost concentration and scrutiny, being as careful as possible to not inflict any damage to the items.
+The Professor, in a somber tone, asks you about a fourth leather bound book...
+actions:
+1. Tell him you have only found three
+2. Ask him the importance of the fourth book
+3. Ask him the appraised value of all the items
+"""
+
+# the ninth round infomation and messages
+[[rounds]]
+name="The Occult"
+video="/albums/lot36_5.mp4"
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+\"\"\"
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+\"\"\"
+{%- endif %}
+
+Here is the CONTEXT of the round:
+\"\"\"
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -351,27 +459,12 @@ Here are the RULES of the round:
 - Feel free to fluff up the above text and make it more mysterious when Professor Dagger tells it, but keep it under 250 words.
 
 - Round completes in more or less than 2 turns, or when the player arrives at the self-storage facility.
-- Do not end chapter with actions.
 \"\"\"
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-{% if memories %}
-Memories:
-\"\"\"
-{%- for memory in memories %}
-- {{memory}}
-{%- endfor %}
-\"\"\"
-{% endif %}
-
-Professor Dagger examines the seance table and the three leather bound books with utmost concentration and scrutiny, being as careful as possible to not inflict any damage to the items.
-
-The Professor, in a somber tone, inquired about a fourth book, the rarest of them all. For the book allows the user to bind a demon to the material world, to earth, but it would burst in flames afterwards, unless the Demon has been betrayed. He concludes that, altogether with the fourth book, could fetch a price well above $2,000,000. Your eyes lit up, recognizing this to be your chance to pay off your debts and turn your life around.
-
-You informed Professor Dagger that the fourth book may be misplaced in your recently acquired storage room. Intrigued, he offered to help you search for the fourth book, hoping to move things along quicker. As the two of you make way towards the self-storage facility, Professor Dagger tells you that he has a confession to make. You...
-
+context: During the ride towards the self-storage facility, Professor Dagger tells you that he has a confession to make. You...
 actions:
 1. Listen to his confession
 2. Ask him to keep what he has to say to himself
