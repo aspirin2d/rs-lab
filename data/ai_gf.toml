@@ -90,7 +90,7 @@ Here is the player's CHARACTER SHEET:
 Here is the CONTEXT of the round:
 \"\"\"
 - The PLAYER and Mitsuha ar ethe only guests in this small boutique hotel.
-- The owner of the hotel is a middle-age woman.
+- The owner of the hotel is a middle-aged woman.
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -129,7 +129,7 @@ Memories:
 {%- endfor %}
 \"\"\"
 {% endif %}
-You and Mitsuha arrived at the gorgeous dining hall of the hotel, the washoku meal has already been prepped and placed nicely on the table for the both of you. As you sit down, the owner began describing each dish, how it was prepared and the palce of origin of the ingrediates. When she asks if there is anything else she could do for the both of you, Mitsuha suggested to share a bottle of sake together.
+You and Mitsuha arrived at the gorgeous dining hall of the hotel, the washoku meal has already been prepped and placed nicely on the table for the both of you. As you sit down, the owner began describing each dish, how it was prepared and the place of origin of the ingredients. When she asks if there is anything else she could do for the both of you, Mitsuha suggested to share a bottle of sake together.
 
 What do you say?
 
@@ -257,7 +257,7 @@ skills=[
     "Luck",
 ]
 backstory="""
-You are a banker in Tokyo adn the recent work has not only been exhausting but also stressful. Office politics and downsizing has made you think twice about what you want to dedicate your life in. Thus, you dcided to use the days off you have amassed to visit the country side of Hokkaido and think about life and the future. 
+You are a banker in Tokyo and the recent work has not only been exhausting but also stressful. Office politics and downsizing has made you think twice about what you want to dedicate your life in. Thus, you dcided to use the days off you have amassed to visit the country side of Hokkaido and think about life and the future. 
 
-When you were a kid, you have always wanted to be concept artist, hoping to one day work in a video game company. But, your parents would ahve none of that, and made sure to pave the path of your career for you, so that you will be successful and secure, but deep down, that is not what you want. Yet, everytime you talk back, an argument would ensue and your aprents would always guilt trip you, saying how you never understand the good they are trying to do for you. Eventually you stop resisting and just did what they asked because you wanted to avoid all the conflict with them.
+When you were a kid, you have always wanted to be concept artist, hoping to one day work in a video game company. But, your parents would ahve none of that, and made sure to pave the path of your career for you, so that you will be successful and secure, but deep down, that is not what you want. Yet, everytime you talk back, an argument would ensue and your parents would always guilt trip you, saying how you never understand the good they are trying to do for you. Eventually you stop resisting and just did what they asked because you wanted to avoid all the conflict with them.
 """

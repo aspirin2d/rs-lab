@@ -23,18 +23,15 @@ Here is the player's information:
 {%- endif %}
 
 Here are the RULES of the round:
-- PLAYER only has $450 in his pocket.
-
-- Round completes in more or less than 5 turns, or when the auction is over.
-- Round completes when player wins the bid.
-- Do not end chapter with actions.
+- player only has $450 in his pocket.
+- Round ends in 5 turns, or when the auction is over.
+- If someone else wins the bids, the manager will tell player the winner is missing, and the storage room is yours a few days later. You can only accept the offer.
 """
 
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-You arrive at an old self-storage facility by invitation from the manager, who has an storage room up for auction due to the death of its owner. It is not your first rodeo with these forms of auctions, like a box of chocolate, no one knows of the potential treasure that hides behind the cold roller shutter. As you and other interested buyers gather around the auctioneer, a worker carrying a bolt cutter snaps off the rusty lock, unveiling a storage room cluttered with various old furniture and antiquities. Without giving any opportunity for the bidders to take a clear look, the auctioneer begins the bid at $50. You...
-
+context: You arrive at an old self-storage facility by invitation from the manager, who has an storage room up for auction due to the death of its owner. It is not your first rodeo with these forms of auctions, like a box of chocolate, no one knows of the potential treasure that hides behind the cold roller shutter. As you and other interested buyers gather around the auctioneer, a worker carrying a bolt cutter snaps off the rusty lock, unveiling a storage room cluttered with various old furniture and antiquities. Without giving any opportunity for the bidders to take a clear look, the auctioneer begins the bid at $50.\nWhat's your bid?
 actions:
 1. Bid $100
 2. Bid $150
@@ -44,6 +41,7 @@ actions:
 # the second round infomation and messages
 [[rounds]]
 name="The Storage"
+video="/albums/lot36_2.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -55,57 +53,102 @@ role="system"
 content="""
 {%- if character %}
 Here is the player's information:
-\"\"\"
 - name: {{character.name}}
 - age: {{character.age}}
 - gender: {{character.gender}}
 - occupation: {{character.occupation}}
-\"\"\"
 {%- endif %}
 
 Here is the CONTEXT of the round:
-\"\"\"
 - The previous owner of your newly acquired storage room is a very strange person.
+- In the security footage, the previous ownder would always bring a paper bag with him and hop 3 times ebfore enetering the stroage and leave with the paper bag empty every single time.
+- If the player leaves, they leave for the parking lot.
 
-{%- if memories %}
+{% if memories %}
 Here are MEMORIES of the previous rounds:
 {%- for memory in memories %}
 - {{memory}}
 {%- endfor %}
 {%- endif %}
-\"\"\"
 
 Here are the TRIGGERS of the round:
-\"\"\"
-- player's decision to accept or reject the middle-age woman must be saved in round summary and memory
-- initiate SPOT HIDDN, OCCULT, or HISTORY check when PLAYER is searching through the storage room 
-\"\"\"
+- If the player doesn't want to watch the security footage, the manager will warn the player of the strangeness of the storage room.
+- If the player watches the securtiy footage, the manager will show you the strange bahviours of the previosu owner, and how he hops three times before entering the storage room.
 
 Here are the RULES of the round:
-\"\"\"
-- Round completes in more or less than 5 turns, or when the player hears a strange noise from the storage room.
-- There are various objects for the PLAYER to discover, make sure all of them are strange and sinister.
-- Round must end before the PLAYER leaves the storage room.
-\"\"\"
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+- Round completes in more or less than 3 turns, or when the player finish watching the security footage, or when the player leaves.
+- Player will always leave for the parking lot.
+"""
+
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context:
+You follow the manager through the myriad hallways to his outdated office. The manager takes out an old tin box and places it on his desk and reaches towards you with an open palm, gesturing for you to pay up, which you obliged. Upon handing you a key for your newly owned storage room, he urges you to watch some old security footage...
+
+actions:
+1. Tell him you don't have time
+2. Reluctantly agree
+3. Pretend you didn't hear him and attempt to leave
+"""
+
+# the third round infomation and messages
+[[rounds]]
+name="The Locket"
+video="/albums/lot36_2.mp4"
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+{%- endif %}
+
+Here is the CONTEXT of the round:
+- The previous owner of your newly acquired storage room is a very strange person.
+- The middle age woman will ask the PLAYER to give her access to an old storage she previously own which now belongs to the player. She would like to recover her family's old silver locket.
+- The old silver locket could actually be worth a good sum.
+
+{% if memories %}
+Here are MEMORIES of the previous rounds:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+
+Here are the TRIGGERS of the round:
+- player's decision to accept or reject the middle-age woman must be saved in round summary and memory
+- If the player rejects the middle-aged woman, she would curse the player.
+- PLAYER can curse back at the middle-aged woman, if so, initiate a INTIMIDATE skill check.
+
+Here are the RULES of the round:
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+- Round completes in more or less than 2 turns, or when the player grabs his duffle bag to return to the storage room.
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-You follow the manager through the myriad hallways to his outdated office. You make a quick phone call to Alex, and explain to him that you will pay what you owe him in a few days, to which he responds with distasteful threats. The manager takes out an old tin box and places it on his desk and reaches towards you with an open palm, gesturing for you to pay up, which you obliged. Upon handing you a key for your newly owned storage room, he urges you to watch some old security footage.
-
-Through his CRT screen, he explains to you that the previous owner visits the storage room every day for as long as he can remember. Strangely enough, he would always bring a paper bag with him and hop 3 times towards the storage before entering, and leave with the paper empty every single time.
-
-The footage is strange, but you have other worries. While on the way to your newly acquired storage, you are intercepted by a middle-aged woman. She begs you to give her access to her old storage you had bid on last month so that she may recover her family’s old silver locket. You...
-
+context: Regardless of what happened in the manager's office, you have more important things to worry about. As you make your way to the parking lot to grab your duffle bag, you are intercepted by a middle-aged woman. She begs you to give her access to her old storage you had bid on last month so that she may recover her family’s old silver locket.
 actions:
 1. Reject her request
 2. Accept her request but lose out on potential earnings
 3. Ignore her completely
 """
 
-# the third round infomation and messages
+# the fourth round infomation and messages
 [[rounds]]
-name="The Debt"
+name="The Items"
+video="/albums/lot36_3.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -117,12 +160,62 @@ role="system"
 content="""
 {%- if character %}
 Here is the player's information:
-\"\"\"
 - name: {{character.name}}
 - age: {{character.age}}
 - gender: {{character.gender}}
 - occupation: {{character.occupation}}
-\"\"\"
+{%- endif %}
+
+Here is the CONTEXT of the round:
+- The peculiar round wooden block has a pentagram inlay dominating its surface, coupled with intricate carvings and unfamiliar symbols around its edges. 
+- The round wooden block is 1 meter wide and 10 centimeter thick.
+- There are no cellphone reception in the self-storage facility
+
+{%- if memories %}
+Here are MEMORIES of the previous rounds:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+
+Here are the TRIGGERS of the round:
+- The PLAYER will always find a peculiar round wooden block with a pentagram inlay on its surface and will immediately recognize the quality of craftsmanship of the round wooden block.
+- Initiate OCCULT skill check when the PLAYER interacts with the wooden block, if successful, it will reveal that this item is used for summoning other worldly entity.
+- PLAYER will bring the round wooden block back to the truck.
+
+Here are the RULES of the round:
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+- Round will ends in 5 turns, or when the player returns to his truck with the round wooden block.
+"""
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context: You enter your newly acquired storage and begin rumamging through its contents, placing a few items into your duffle bag, but neither of them feel expensive or valuable. You continue to flip through the mess...
+actions:
+1. Go through the old dresser
+2. Rummage through the pile of junk
+3. Open the antiquated cabinet
+"""
+
+# the fifth round infomation and messages
+[[rounds]]
+name="The Debt"
+video="/albums/lot36_3.mp4"
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
 {%- endif %}
 
 {%- if memories %}
@@ -131,53 +224,34 @@ Here are MEMORIES of the previous rounds:
 - {{memory}}
 {%- endfor %}
 {%- endif %}
-\"\"\"
 
 Here are the TRIGGERS of the round:
-\"\"\"
 - Initiate a FIGHTING skill check at HARD difficulty when there is combat.
 - If PLAYER is about to beat ALEX in a fight, then he would pull out a handgun.
-\"\"\"
 
 Here are the RULES of the round:
-\"\"\"
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
 - Initiate other skill check if it is appropriate.
-
 - ALEX will always win the fight, but will NOT kill the PLAYER.
 - ALEX will warn the PLAYER to PAY HIM BACK TOMORROW after he wins the fight.
 - ALEX is very aggressive and will beat the PLAYER regardless of their response.
 - ALEX ONLY wants payment in CASH.
-
-- Round completes in more or less than 3 turns, or when the player is defeated by ALEX, or when ALEX leaves.
-- Do not end round with actions.
-\"\"\"
+- Round will ends in 3 turns, or when the player is defeated by ALEX, or when ALEX leaves.
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-{% if memories %}
-Memories:
-\"\"\"
-{%- for memory in memories %}
-- {{memory}}
-{%- endfor %}
-\"\"\"
-{% endif %}
-
-As you rummage through the newly acquired storage room, you come across a peculiar round wooden block with a pentagram inlay dominating much of its surface, coupled with intricate carvings and unfamiliar symbols. Even an untrained eye can recognize the quality of craftsmanship and time committed to produce such an object. 
-
-You discover a few more expensive looking objects and place them inside your duffle bag, then proceed to carefully load the peculiar wooden block onto your truck. As you close the tailgates, you suddenly find yourself knocked on the gravel floor. You look up with your lips bloody, and realize you have encountered Alex’s fury. You...
-
+context: As you carefully load the peculiar wooden block onto your truck and close the tailgates, you suddenly find yourself knocked on the gravel floor. You look up with your lips bloody, and notice Alex towering over you, his fist clenched tight, brows furrowed. You...
 actions:
 1. Get up and tackle him
 2. Tell him that you will get him his money soon
 3. Begin verbally assaulting him
 """
 
-# the forth round infomation and messages
+# the fourth round infomation and messages
 [[rounds]]
 name="The Professor"
+video="/albums/lot36_4.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -189,16 +263,13 @@ role="system"
 content="""
 {%- if character %}
 Here is the player's information:
-\"\"\"
 - name: {{character.name}}
 - age: {{character.age}}
 - gender: {{character.gender}}
 - occupation: {{character.occupation}}
-\"\"\"
 {%- endif %}
 
 Here is the CONTEXT of the round:
-\"\"\"
 - initiate occult skill check when it is relevant. 
 
 {%- if memories %}
@@ -207,38 +278,22 @@ Here are MEMORIES of the previous rounds:
 - {{memory}}
 {%- endfor %}
 {%- endif %}
-\"\"\"
 
 Here are the TRIGGERS of the round:
-\"\"\"
 - If the hidden compartment is open, then it will reveal 3 very strange leather bound books. This is when Ms. Blackwell invites Professor Dagger.
 - Trigger an OCCULT skill check if PLAYER examines the leather bound book.
-\"\"\"
 
 Here are the RULES of the round:
-\"\"\"
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
-
 - Ms. Blackwell will tell you that the round wooden block is infact a SEANCE TABLE.
 - Ms. Blackwell will unveil the hidden compartment built within the SEANCE TABLE.
 - Ms. Blackwell will invite Professor Dagger, a potential buyer to view the SEANCE TABLE.
-
 - Round completes in more or less than 2 turns, or immediately after the arrival of Professor Dagger.
 - Do not end chapter with actions.
-\"\"\"
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-{% if memories %}
-Memories:
-\"\"\"
-{%- for memory in memories %}
-- {{memory}}
-{%- endfor %}
-\"\"\"
-{% endif %}
-
 The manager hands you some gauze and a bottle of rubbing alcohol as you clean yourself up in the restroom. You focus on the stinging pain of alcohol on your cut lips, reminding yourself how unfair life is, and would relentlessly beat any man down.
 
 You stare long and hard at yourself in the mirror before closing the wound with a closure strip. The manager, sympathetic to your predicament, introduces you to a dealer that specializes in collecting esoteric and abstruse items. 
@@ -256,6 +311,7 @@ actions:
 # the fifth round infomation and messages
 [[rounds]]
 name="The Confession"
+video="/albums/lot36_5.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -325,6 +381,7 @@ actions:
 # the final round infomation and messages
 [[rounds]]
 name="The Truth"
+video="/albums/lot36_6.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -387,18 +444,9 @@ Here are the RULES of the round:
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-{% if memories %}
-Memories:
-\"\"\"
-{%- for memory in memories %}
-- {{memory}}
-- Kyle Jackson, despite your financial desperation, you accepted a middle-aged woman's request to access the storage room heyou had recently purchased. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
-{%- endfor %}
-\"\"\"
-{% endif %}
+Kyle Jackson, despite your financial desperation, you accepted a middle-aged woman's request to access the storage room heyou had recently purchased. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
 
 You and Professor Dagger begin scouring through the mess, leaving nothing unturned, yet, after two long hours, your hands hold nothing but dust. You sense the Professor’s eyes laced with disappointment, but your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments fail to detect. As you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding it across its surface gently, and discovered a concealed mechanism. Which upon a soft press, unveils a dark corridor effluviating a pungent scent.
-
 Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you…
 
 actions:
@@ -440,14 +488,6 @@ summary: <summary of the round...>
 '''
 - You should always include the triggerd events in the 'summary'.
 """
-symptom=[
-    "incoherent speech",
-    "uncontrollable twitching, trembling",
-    "delusions of persecution",
-    "strange appetites (dirt, clay, etc...)",
-    "scratches, punches, and bruises all over the body"
-    ]
-
 memories=[]
 
 # character sheet for the player
