@@ -509,7 +509,7 @@ actions:
 3. Look behind the large wooden shelf by the wall
 """
 
-# the final round infomation and messages
+# the eleventh round infomation and messages
 [[rounds]]
 name="The Truth"
 video="/albums/lot36_6.mp4"
@@ -531,8 +531,10 @@ Here is the player's information:
 {%- endif %}
 
 Here is the CONTEXT of the round:
-- there is only one EXIT.
-- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
+- There is a withered body lying over a pentagram made of a strange red fluid.
+- The fourth book is placed on a podium at the far end of the hidden room.
+- The withered body's face is completely gone, and something sinister is writhing inside of it, leaving a gaping cavity on her entire face.
+- inside the room is a near withered body of the storage room's previously deceased owner's sister.
 
 {%- if memories %}
 Round memories:
@@ -542,36 +544,20 @@ Round memories:
 {%- endif %}
 
 Here are the TRIGGERS of the round:
-- seeing the withered body will trigger a SANITY check at HARD difficulty
-- Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
-- After the withered body is awakened, it will chase after the player at break neck speed.
-- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
+- Initiate SANITY check at EXTREME difficulty upon entering the room.
+- Removing the fourth book from the podium will cause the strange red fluid to evaporate and disappear.
+- Tentacles will begin pouring out from the withered body's facial cavity and eat the Professor once the strange red fluid disappears.
 
 Here are the RULES of the round:
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
-
-- At the end of the corridor is a near withered body of the storage room's previously deceased owner's sister.
-- The withered body's face is completely gone, and something sinister is writhing inside of it, leaving a gaping cavity on her entire face.
-- The withered body lies over a pentagram made of a strange red fluid.
-- The fourth book is placed on a podium at the far end of the hidden room.
-- Removing the fourth book from the podium will cause the strange red fluid to evaporate and disappear.
-- Tentacles will begin pouring out from the withered body's facial cavity and eat the Professor once the strange red fluid disappears.
-- There is only 1 exit at the storage facility, and it is LOCKED. There is no other way to escape. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
-- Do not reveal the presence of the middle-age woman to the player.
-- The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
-- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request. If accepted, then the exit is unlocked. Vice versa.
-
-- Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
-- Do not end chapter with actions.
+- The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER.
+- Round completes in more or less than 5 turns, or when the player escapes the creepy room.
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-Kyle Jackson, despite your financial desperation, you accepted a middle-aged woman's request to access the storage room heyou had recently purchased. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
-
-You and Professor Dagger begin scouring through the mess, leaving nothing unturned, yet, after two long hours, your hands hold nothing but dust. You sense the Professor’s eyes laced with disappointment, but your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments fail to detect. As you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding it across its surface gently, and discovered a concealed mechanism. Which upon a soft press, unveils a dark corridor effluviating a pungent scent.
-Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you…
-
+Context: You follow Professor Dagger down the malodorous corridor behind the false wall, leading you to a door holding back the evil within.
+Before entering, Professor Dagger warns you not to look or speak to whatever is inside, for you may enter a state of frenzy. With that in mind, you…
 actions:
 1. Follow him closely in silence
 2. Ask him what the foul odour is
@@ -580,7 +566,7 @@ actions:
 
 # the final round infomation and messages
 [[rounds]]
-name="The Truth"
+name="The Exit"
 video="/albums/lot36_6.mp4"
 [[rounds.messages]] # system rules
 role="system"
@@ -600,8 +586,8 @@ Here is the player's information:
 {%- endif %}
 
 Here is the CONTEXT of the round:
-- there is only one EXIT.
-- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
+- There is only one EXIT.
+- The withered body will chase after the player.
 
 {%- if memories %}
 Round memories:
@@ -611,40 +597,39 @@ Round memories:
 {%- endif %}
 
 Here are the TRIGGERS of the round:
-- seeing the withered body will trigger a SANITY check at HARD difficulty
-- Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
-- After the withered body is awakened, it will chase after the player at break neck speed.
-- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
+- If the player accepted the middle-aged woman's request, then she will miraculously appear behind the only exit and unlock the door as appreciation for giving her family locket back.
+- If the player rejected the middle-aged woman's request, the she will miraculously appear behind the only exit and leave the door locked and watch the player suffer.
+- Initiate a STEALTH check at EXTREME difficulty if the PLAYER attempts to hide.
+- Initiate a FIGHTING (BRAWL) check at EXTREME difficult if the PLAYER attempts to fight.
+
 
 Here are the RULES of the round:
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
-
-- At the end of the corridor is a near withered body of the storage room's previously deceased owner's sister.
-- The withered body's face is completely gone, and something sinister is writhing inside of it, leaving a gaping cavity on her entire face.
-- The withered body lies over a pentagram made of a strange red fluid.
-- The fourth book is placed on a podium at the far end of the hidden room.
-- Removing the fourth book from the podium will cause the strange red fluid to evaporate and disappear.
-- Tentacles will begin pouring out from the withered body's facial cavity and eat the Professor once the strange red fluid disappears.
 - There is only 1 exit at the storage facility, and it is LOCKED. There is no other way to escape. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
 - Do not reveal the presence of the middle-age woman to the player.
-- The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
-- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request. If accepted, then the exit is unlocked. Vice versa.
+- The withered body will chase after the PLAYER and will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
 
-- Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
-- Do not end chapter with actions.
+- Round completes in more or less than 5 turns, or when the player escapes the self-storage facility, or die.
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-Kyle Jackson, despite your financial desperation, you accepted a middle-aged woman's request to access the storage room heyou had recently purchased. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
 
-You and Professor Dagger begin scouring through the mess, leaving nothing unturned, yet, after two long hours, your hands hold nothing but dust. You sense the Professor’s eyes laced with disappointment, but your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments fail to detect. As you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding it across its surface gently, and discovered a concealed mechanism. Which upon a soft press, unveils a dark corridor effluviating a pungent scent.
-Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you…
+{%- if memories %}
+Round memories:
+{%- for memory in memories %}
+- {{memory}}
+- You have assited the middle-aged woman in tracking down her family locket.
+{%- endfor %}
+{%- endif %}
+
+Context:
+You ran as fast as you could away from the monstrosity that was awakened. Its tentacles writhing, pulling, and pushing as it chases after you. There is only one exit to this self-storage facility, and you...
 
 actions:
-1. Follow him closely in silence
-2. Ask him what the foul odour is
-3. Comment on the surroundings
+1. Run as fast as you could towards the exit
+2. Look for anything sturdy and stand your ground
+3. Find a place to hide
 """
 
 # the extra informations for the game and message templates
