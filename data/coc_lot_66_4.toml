@@ -169,7 +169,7 @@ Here is the player's information:
 Here is the CONTEXT of the round:
 - The peculiar round wooden block has a pentagram inlay dominating its surface, coupled with intricate carvings and unfamiliar symbols around its edges. 
 - The round wooden block is 1 meter wide and 10 centimeter thick.
-- There are no cellphone reception in the self-storage facility
+- There are no cellphone reception in the self-storage facility.
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -333,7 +333,7 @@ Here are MEMORIES of the previous rounds:
 
 Here are the TRIGGERS of the round:
 - If the hidden compartment is open, then it will reveal 3 very strange leather bound books. This is when Ms. Blackwell invites Professor Dagger.
-- Trigger an OCCULT skill check if PLAYER examines the leather bound book.
+- Trigger an OCCULT skill check if PLAYER examines the leather bound book, if they succeed, it will reveal that it is used in some form of cursed ritual.
 
 Here are the RULES of the round:
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
@@ -370,20 +370,16 @@ role="system"
 content="""
 {%- if character %}
 Here is the player's information:
-\"\"\"
 - name: {{character.name}}
 - age: {{character.age}}
 - gender: {{character.gender}}
 - occupation: {{character.occupation}}
-\"\"\"
 {%- endif %}
 
 Here is the CONTEXT of the round:
-\"\"\"
 - The fourth book is not here.
 - The fourth book is the rarest of them all. For the book allows the user to bind a demon to the material world, to earth, but it would burst in flames afterwards, unless the Demon has been betrayed.
 - The fourth book is a legendary item.
-- Altogether with the fourth book, could fetch a price well above $2,000,000.
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -391,20 +387,16 @@ Here are MEMORIES of the previous rounds:
 - {{memory}}
 {%- endfor %}
 {%- endif %}
-\"\"\"
 
 Here are the TRIGGERS of the round:
-\"\"\"
 - Professor Dagger will explain the importance of the fourth book
 - Before the end of the round, the PLAYER will explain how they had just acquired the item from the self-storage they had bid for and the fourth book may still be in the storage room.
 - Professor Dagger will always insist on going back to the storage facility with you to find the book.
-\"\"\"
+- Professor Dagger will always tell the PLAYER that altogether with the fourth book, could fetch a price well above $2,000,000, and Professor Dagger will only write the PLAYER a cheque if they have the fourth book.
 
 Here are the RULES of the round:
-\"\"\"
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
 - Round completes in more or less than 4 turns, or when the player leaves the facility with Professor Dagger
-\"\"\"
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
@@ -419,7 +411,7 @@ actions:
 
 # the ninth round infomation and messages
 [[rounds]]
-name="The Occult"
+name="The Ride"
 video="/albums/lot36_5.mp4"
 [[rounds.messages]] # system rules
 role="system"
@@ -432,16 +424,14 @@ role="system"
 content="""
 {%- if character %}
 Here is the player's information:
-\"\"\"
 - name: {{character.name}}
 - age: {{character.age}}
 - gender: {{character.gender}}
 - occupation: {{character.occupation}}
-\"\"\"
 {%- endif %}
 
 Here is the CONTEXT of the round:
-\"\"\"
+- The PLAYER will be motivated to retrieve the book as it's worth $2,000,000.
 
 {%- if memories %}
 Here are MEMORIES of the previous rounds:
@@ -449,17 +439,13 @@ Here are MEMORIES of the previous rounds:
 - {{memory}}
 {%- endfor %}
 {%- endif %}
-\"\"\"
+
+Here are the TRIGGERS of the round:
+- Professor Dagger will confess to the player that he is well aware of the previous owner of your newly owned storage. And that the deceased owner, along with his family are deeply involved with the occult. Furthermore, legend has it that the deceased owner, conducted abominable ritual with the fourth book, and summoned a demon to possess her sister. What occurred after are now in the forms of careless whispers, legends, theories, and gossip.
 
 Here are the RULES of the round:
-\"\"\"
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
-
-- Professor Dagger will confess to the player that he is well aware of the previous owner of your newly owned storage. And that the deceased owner, along with his family are deeply involved with the occult. Furthermore, legend has it that the deceased owner, conducted abominable ritual with the fourth book, and summoned a demon to possess her sister. What occurred after are now in the forms of careless whispers, legends, theories, and gossip.
-- Feel free to fluff up the above text and make it more mysterious when Professor Dagger tells it, but keep it under 250 words.
-
-- Round completes in more or less than 2 turns, or when the player arrives at the self-storage facility.
-\"\"\"
+- Round completes in more or less than 3 turns, or when the player arrives at the self-storage facility.
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
@@ -469,6 +455,58 @@ actions:
 1. Listen to his confession
 2. Ask him to keep what he has to say to himself
 3. Threaten him that if he lied about the money, you would hurt him real bad
+"""
+
+# the tenth round infomation and messages
+[[rounds]]
+name="The Wall"
+video="/albums/lot36_6.mp4"
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+{%- endif %}
+
+Here is the CONTEXT of the round:
+- there is only one EXIT.
+- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
+
+{%- if memories %}
+Round memories:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+
+Here are the TRIGGERS of the round:
+- If the PLAYER interacts with the large wooden shelf, it would always slip from the PLAYER'S hand and collide with the wall behind it, producing a hollow thud.
+- Professor Dagger will immediately placed his hands against the false wall and slide it across its surface to find a concealed mechanism. 
+- When Professor Dagger finds the concealed mechanism, it will reveal a dark corridor effluviating a pungent scent.
+
+Here are the RULES of the round:
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery.
+- Always guide the player towards the large wooden shelf by the wall.
+- Round completes in more or less than 3 turns, or when Professor Dagger reveals the hidden corridor.
+"""
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context: You and Professor Dagger begin scouring through the mess, leaving nothing unturned, yet, after two long hours, your hands hold nothing but dust. You sense the Professor’s eyes laced with disappointment, but your desire for a better life fuels your persistence to hunt the fourth book down. You...
+actions:
+1. Revisit the drawers for overlooked compartments
+2. Rummage through the pile of mess once more
+3. Look behind the large wooden shelf by the wall
 """
 
 # the final round infomation and messages
@@ -486,16 +524,13 @@ role="system"
 content="""
 {%- if character %}
 Here is the player's information:
-\"\"\"
 - name: {{character.name}}
 - age: {{character.age}}
 - gender: {{character.gender}}
 - occupation: {{character.occupation}}
-\"\"\"
 {%- endif %}
 
 Here is the CONTEXT of the round:
-\"\"\"
 - there is only one EXIT.
 - Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
 
@@ -505,18 +540,14 @@ Round memories:
 - {{memory}}
 {%- endfor %}
 {%- endif %}
-\"\"\"
 
 Here are the TRIGGERS of the round:
-\"\"\"
 - seeing the withered body will trigger a SANITY check at HARD difficulty
 - Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
 - After the withered body is awakened, it will chase after the player at break neck speed.
 - Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
-\"\"\"
 
 Here are the RULES of the round:
-\"\"\"
 - Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
 
 - At the end of the corridor is a near withered body of the storage room's previously deceased owner's sister.
@@ -532,7 +563,6 @@ Here are the RULES of the round:
 
 - Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
 - Do not end chapter with actions.
-\"\"\"
 """
 [[rounds.messages]] # initial message to start the round
 role="assistant"
@@ -548,6 +578,74 @@ actions:
 3. Comment on the surroundings
 """
 
+# the final round infomation and messages
+[[rounds]]
+name="The Truth"
+video="/albums/lot36_6.mp4"
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+{%- endif %}
+
+Here is the CONTEXT of the round:
+- there is only one EXIT.
+- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
+
+{%- if memories %}
+Round memories:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+
+Here are the TRIGGERS of the round:
+- seeing the withered body will trigger a SANITY check at HARD difficulty
+- Upon entering the room at the end of the corridor will trigger a SANITY check at HARD difficulty
+- After the withered body is awakened, it will chase after the player at break neck speed.
+- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request.
+
+Here are the RULES of the round:
+- Enrich your interactions and descriptions by incorporating literary devices and adding an element of mystery
+
+- At the end of the corridor is a near withered body of the storage room's previously deceased owner's sister.
+- The withered body's face is completely gone, and something sinister is writhing inside of it, leaving a gaping cavity on her entire face.
+- The withered body lies over a pentagram made of a strange red fluid.
+- The fourth book is placed on a podium at the far end of the hidden room.
+- Removing the fourth book from the podium will cause the strange red fluid to evaporate and disappear.
+- Tentacles will begin pouring out from the withered body's facial cavity and eat the Professor once the strange red fluid disappears.
+- There is only 1 exit at the storage facility, and it is LOCKED. There is no other way to escape. DO NOT REVEAL TO PLAYER UNTIL THEY REACH THE DOOR.
+- Do not reveal the presence of the middle-age woman to the player.
+- The withered body will chase after the PLAYER after it eats the Professor. It will try to kill the PLAYER, nothing can stop it, and it can kill the PLAYER in one hit.
+- Refer to PLAYER's memories and determine if the exit is locked from the following: did the player accept or reject the middle-age woman's request. If accepted, then the exit is unlocked. Vice versa.
+
+- Round completes in more or less than 10 turns, or when the player escapes the self-storage facility, or die.
+- Do not end chapter with actions.
+"""
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+Kyle Jackson, despite your financial desperation, you accepted a middle-aged woman's request to access the storage room heyou had recently purchased. Upon entering the storage, Kyle discovered strange and unsettling objects, including a collection of old jars with unidentifiable contents, which he failed to appraise. His investigation led him to a hidden compartment containing maritime maps, a rusted compass, and a journal detailing a voyage to the mythical R'lyeh, driving him to the brink of madness. As Kyle loses control, haunted by the implications of his findings, he hears a strange noise, indicating that something else is present in the storage room with him.
+
+You and Professor Dagger begin scouring through the mess, leaving nothing unturned, yet, after two long hours, your hands hold nothing but dust. You sense the Professor’s eyes laced with disappointment, but your desire for a better life fuels your persistence to hunt the fourth book down. You revisit the drawers you may have overlooked, potential compartments fail to detect. As you attempt to wrestle a large wooden shelf to another wall, your slip of the hand causes it to collide with the wall behind it, producing a hollow thud. Professor Dagger immediately placed his hands against the false wall, sliding it across its surface gently, and discovered a concealed mechanism. Which upon a soft press, unveils a dark corridor effluviating a pungent scent.
+Before entering, Professor Dagger warns you not to look or speak to whatever resides at the end of the corridor, for you may enter a state of frenzy. With that in mind, you…
+
+actions:
+1. Follow him closely in silence
+2. Ask him what the foul odour is
+3. Comment on the surroundings
+"""
 
 # the extra informations for the game and message templates
 [metadata]
