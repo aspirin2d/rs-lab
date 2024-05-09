@@ -41,7 +41,7 @@ actions:
 # the second round infomation and messages
 [[rounds]]
 name="The Storage"
-video="/albums/lot36_2.mp4"
+video="/albums/lot36_office.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -96,7 +96,7 @@ actions:
 # the third round infomation and messages
 [[rounds]]
 name="The Locket"
-video="/albums/lot36_2.mp4"
+video="/albums/lot36_oldlady.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -148,7 +148,7 @@ actions:
 # the fourth round infomation and messages
 [[rounds]]
 name="The Items"
-video="/albums/lot36_3.mp4"
+video="/albums/lot36_4.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -201,7 +201,7 @@ actions:
 # the fifth round infomation and messages
 [[rounds]]
 name="The Debt"
-video="/albums/lot36_3.mp4"
+video="/albums/lot36_parkinglotfight.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -251,7 +251,7 @@ actions:
 # the sixth round infomation and messages
 [[rounds]]
 name="The Pain"
-video="/albums/lot36_4.mp4"
+video="/albums/lot36_washroom.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -303,7 +303,7 @@ actions:
 # the seventh round infomation and messages
 [[rounds]]
 name="The Money"
-video="/albums/lot36_4.mp4"
+video="/albums/lot36_victorianhouse.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -412,7 +412,7 @@ actions:
 # the ninth round infomation and messages
 [[rounds]]
 name="The Ride"
-video="/albums/lot36_5.mp4"
+video="/albums/lot36_6.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -460,7 +460,7 @@ actions:
 # the tenth round infomation and messages
 [[rounds]]
 name="The Wall"
-video="/albums/lot36_6.mp4"
+video="/albums/lot36_4.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -512,7 +512,7 @@ actions:
 # the eleventh round infomation and messages
 [[rounds]]
 name="The Truth"
-video="/albums/lot36_6.mp4"
+video="/albums/lot36_9.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
@@ -567,7 +567,7 @@ actions:
 # the final round infomation and messages
 [[rounds]]
 name="The Exit"
-video="/albums/lot36_6.mp4"
+video="/albums/lot36_noescape.mp4"
 [[rounds.messages]] # system rules
 role="system"
 content="""
