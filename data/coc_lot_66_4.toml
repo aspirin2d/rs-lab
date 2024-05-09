@@ -31,7 +31,7 @@ Here are the RULES of the round:
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-context: You arrive at an old self-storage facility by invitation from the manager, who has an storage room up for auction due to the death of its owner. It is not your first rodeo with these forms of auctions, like a box of chocolate, no one knows of the potential treasure that hides behind the cold roller shutter. As you and other interested buyers gather around the auctioneer, a worker carrying a bolt cutter snaps off the rusty lock, unveiling a storage room cluttered with various old furniture and antiquities. Without giving any opportunity for the bidders to take a clear look, the auctioneer begins the bid at $50.\nWhat's your bid?
+context: You arrive at an old self-storage facility by invitation from the manager, who has an storage room up for auction due to the death of its owner. As you and other interested buyers gather around the auctioneer, a worker carrying a bolt cutter snaps off the rusty lock, unveiling a storage room cluttered with various old furniture and antiquities. Without giving any opportunity for the bidders to take a clear look, the auctioneer begins the bid at $50.\nWhat's your bid?
 actions:
 1. Bid $100
 2. Bid $150
@@ -614,17 +614,7 @@ Here are the RULES of the round:
 [[rounds.messages]] # initial message to start the round
 role="assistant"
 content="""
-
-{%- if memories %}
-Round memories:
-{%- for memory in memories %}
-- {{memory}}
-- You have assited the middle-aged woman in tracking down her family locket.
-{%- endfor %}
-{%- endif %}
-
-Context:
-You ran as fast as you could away from the monstrosity that was awakened. Its tentacles writhing, pulling, and pushing as it chases after you. There is only one exit to this self-storage facility, and you...
+Context:You ran as fast as you could away from the monstrosity that was awakened. Its tentacles writhing, pulling, and pushing as it chases after you. There is only one exit to this self-storage facility, and you...
 
 actions:
 1. Run as fast as you could towards the exit
