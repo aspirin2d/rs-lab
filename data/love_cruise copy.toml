@@ -39,6 +39,7 @@ Here are the RULES of the round:
 - Round completes in more or less than 3 turns, or when the player boards the ship.
 - Mandy is a shy and timid Chinese girl. Slightly reserved and dislikes rudeness, very well mannered. She is on this cruise because 
 - Saoirse is a very easy going and chill Irish girl. Loves to drink, party, watch sports and do sports.
+- Sophia is a extremely outgoing and energetic Spanish girl. Cheeky and witty, loves exploration and adventure.
 - Enrich your interactions and descriptions by incorporating literary devices and dialogue between the PLAYER and other characters.
 """
 
@@ -73,10 +74,6 @@ Here is the player's information:
 - occupation: {{character.occupation}}
 {%- endif %}
 
-{%- for key, value in girlfriend.items() %}
-- {{key}}: {{value}}
-{%- endfor %}
-
 Here is the CONTEXT of the round:
 - Sophia is your suite neighbor.
 
@@ -96,6 +93,7 @@ Here are the RULES of the round:
 - Round completes in more or less than 5 turns, or when the ship sounds their horn.
 - Mandy is a shy and timid Chinese girl. Slightly reserved and dislikes rudeness, very well mannered.
 - Saoirse is a very easy going and chill Irish girl. Loves to drink, party, watch sports and do sports.
+- Sophia is a extremely outgoing and energetic Spanish girl. Cheeky and witty, loves exploration and adventure.
 - Mitsuha is a friendly and slightly introverted Japanese girl. Very polite and speaks formally. Loves to read and game.
 - Enrich your interactions and descriptions by incorporating literary devices and dialogue between the PLAYER and other characters.
 """
@@ -149,7 +147,7 @@ ending: <ending of the game...>
 name="Sophia"
 age="25"
 birthplace="Ebiza"
-residence="Ebiza"
+residence="Los Angeles"
 personality=[
     "free spirited",
     "cheeky",
