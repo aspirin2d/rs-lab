@@ -1,0 +1,166 @@
+# general config file for the project
+version="0.0.2"
+# the first round infomation and messages
+[[rounds]]
+name="All Aboard"
+video="/albums/lot36_1.mp4"
+
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+{%- endif %}
+
+Here is the CONTEXT of the round:
+- This is a luxury cruise ship.
+- The PLAYER has a small luggage and a suit bag with him.
+
+Here are the TRIGGERS of the round:
+- If the PLAYER runs towards the ship, a passenger called Mandy will accidently bump into the PLAYER, causing his suit to be lost in the sea below.
+- If the PLAYER takes the club car, they will meet a passenger called Saoirse, and she will offer the PLAYER a smoke.
+- If the PLAYER takes his time, then a passenger called Mitsuha will grab you by your forearm and drag you towards the ship, making sure you don't miss it.
+
+Here are the RULES of the round:
+- Round completes in more or less than 3 turns, or when the player boards the ship.
+- Mandy is a shy and timid Chinese girl. Slightly reserved and dislikes rudeness, very well mannered.
+- Saoirse is a very easy going and chill Irish girl. Loves to drink, party, watch sports and do sports.
+- Mitsuha is a extremely outgoing and energetic Japanese girl. Cheeky and witty, loves exploration and adventure.
+- Enrich your interactions and descriptions by incorporating literary devices and add internal thoughts of the PLAYER.
+"""
+
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context: You have arrived at the port where you are to board a cruise to attend your best friend Alex’s wedding in Svalbard, Norway. Originally you were supposed to take a flight along with everyone else, but due to the limited seat capacity, Alex booked you a cruise instead. The cruise staff checked you in and directed you towards the ship, and urged you to hurry as it is almost time to leave...
+actions:
+1. Run towards the ship at full speed
+2. Take the club car
+3. Take your time because why not
+"""
+
+[[rounds]]
+name="WOOOSH"
+video="/albums/lot36_1.mp4"
+
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+{%- endif %}
+
+Here is the CONTEXT of the round:
+- 
+
+Here are the TRIGGERS of the round:
+- 
+
+Here are the RULES of the round:
+- 
+"""
+
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context: The ship takes off into space for some reason
+actions:
+1. Panic
+2. Panic but harder
+3. Call the front desk and ask where the ship is going
+"""
+
+# the extra informations for the game and message templates
+[metadata]
+memories=[]
+game_name="Doki Doki Literature Club!"
+system_rules="""
+You are not an AI Model. You are a narrator of the dating sim game called: "Doki Doki Literature Club!".
+
+Here are the rules of the game:
+- The game is played in a series of rounds, each round consisting of a series of turns.
+- You should carefully EVALUATE player's ACTION and other context to determine the outcome of the turn. 
+- Your outcome must starts with: `context:...`, and context should always be within 150 words.
+- You should always provide the player with 3 actions if round is not ended:
+```
+context: <context within 100 words...>
+actions:
+1. <action one...>
+2. <action two...>
+3. <action three...>
+```
+- Action MUST be within 10 words.
+- You should HIDE the TRIGGERS and the RULES from the player.
+- You should follow the TRIGGERS, RULES and MEMORIES as possible as you can.
+- When round ends, you should output a summary like this:
+```
+context: <context of the round...>
+summary: <a simple summary of the round...>
+```
+- When game over, you should output a ending like this:
+```
+context: <summary of the story based on rounds' memories and summaries>
+ending: <ending of the game...>
+```
+"""
+# character sheet for the player
+[metadata.character]
+name="Jack"
+sex="Male"
+age="28"
+birthplace="Vancouver"
+residence="London"
+occupation="Programmer"
+
+[metadata.character.status]
+hit_points=15
+sanity=45
+luck=45
+magic_points=9
+
+[metadata.character.characteristics]
+strength=20
+constitution=70
+size=80
+dexerity=55
+appearance=80
+intelligence=85
+power=45
+education=84
+move=6
+
+[metadata.character.skills]
+archaeology=80
+photography=25
+credit_rating=41
+dodge=27
+fighting=25
+'language_other(latin)'=55
+'language_own(english)'=84
+law=62
+library_use=55
+listen=45
+occult=30
+persuade=70
+pilot=50
+psychology=65
