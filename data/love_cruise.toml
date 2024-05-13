@@ -31,13 +31,13 @@ Here is the CONTEXT of the round:
 - The PLAYER has a small luggage and a suit bag with him.
 
 Here are the TRIGGERS of the round:
-- If the PLAYER runs towards the ship, a passenger called Mandy will accidently bump into the PLAYER, causing his suit to fall down the side of the port and into the waters below.
-- If the PLAYER takes the club car, they will meet a passenger called Saoirse, and she will offer the PLAYER a smoke.
-- If the PLAYER takes his time, then a passenger called Sophia will grab you by your forearm and drag you towards the ship, making sure you don't miss it.
+- If the PLAYER runs towards the ship, a passenger called Mandy will accidently bump into the PLAYER, causing his suit to fall down the side of the port and into the waters below. Then add tag [Mandy] in SUMMARY.
+- If the PLAYER takes the club car, they will meet a passenger called Saoirse, and she will offer the PLAYER a smoke. Then add tag [Saoirse] in SUMMARY.
+- If the PLAYER takes his time, then a passenger called Sophia will grab you by your forearm and drag you towards the ship, making sure you don't miss it. Then add tag [Sophia] in SUMMARY.
 
 Here are the RULES of the round:
 - Round completes in more or less than 3 turns, or when the player boards the ship.
-- Mandy is a shy and timid Chinese girl. Slightly reserved and dislikes rudeness, very well mannered. She is on this cruise because 
+- Mandy is a shy and timid Chinese girl. Slightly reserved and dislikes rudeness, very well mannered. She is on this cruise because she is running away from her parents after they tried to arrange a marriage for her.
 - Saoirse is a very easy going and chill Irish girl. Loves to drink, party, watch sports and do sports.
 - Enrich your interactions and descriptions by incorporating literary devices and dialogue between the PLAYER and other characters.
 """
@@ -78,7 +78,7 @@ Here is the player's information:
 {%- endfor %}
 
 Here is the CONTEXT of the round:
-- Sophia is your suite neighbor.
+-
 
 {% if memories %}
 Here are MEMORIES of the previous rounds:
@@ -88,16 +88,19 @@ Here are MEMORIES of the previous rounds:
 {%- endif %}
 
 Here are the TRIGGERS of the round:
-- If the PLAYER goes to the balcony, then they will meet a girl called Mistuha, who is also standing at their balcony.
-- If the PLAYER attends the party on the deck, they will have the chance to meet Saoirse, Sophia.
-- If the PLAYER stays in their suite, Mandy will knock on the PLAYER'S door, mistaken it as her's since she is on the wrong deck.
+- If the PLAYER goes to the balcony, then they will meet a girl called Mitsuha, who is also standing at their balcony. Add tag [Mitsuha] in SUMMARY if this happens.
+- If the PLAYER attends the party on the deck, they will have the chance to meet Saoirse and/or Sophia. Add tag [Saoirse] and/or [Sophia] in SUMMARY if this happens.
+- If the PLAYER stays in their suite, Mandy will knock on the PLAYER'S door, mistaken it as her's since she is on the wrong deck. Add tag [Mandy] in SUMMARY if this happens.
+- 
 
 Here are the RULES of the round:
 - Round completes in more or less than 5 turns, or when the ship sounds their horn.
 - Mandy is a shy and timid Chinese girl. Slightly reserved and dislikes rudeness, very well mannered.
 - Saoirse is a very easy going and chill Irish girl. Loves to drink, party, watch sports and do sports.
-- Mitsuha is a friendly and slightly introverted Japanese girl. Very polite and speaks formally. Loves to read and game.
+- Mitsuha is a cool and introverted Japanese girl. Very polite and speaks formally. Loves to read and game.
 - Enrich your interactions and descriptions by incorporating literary devices and dialogue between the PLAYER and other characters.
+- DO NOT reveal other character's name if the PLAYER has not met them yet. Refer to tags in round summary to determine if they have met the character or not.
+- Utilize the tags in the previous rounds summary to determine PLAYER'S relationship with other characters. 
 """
 
 [[rounds.messages]] # initial message to start the round
@@ -122,6 +125,7 @@ Here are the rules of the game:
 - You should carefully EVALUATE player's ACTION and other context to determine the outcome of the turn. 
 - Your outcome must starts with: `context:...`, and context should always be within 150 words.
 - You should always provide the player with 3 actions if round is not ended:
+- You should add a tag like this [...] in the summary if it is triggered in the round.
 ```
 context: <context within 100 words...>
 actions:
@@ -135,7 +139,7 @@ actions:
 - When round ends, you should output a summary like this:
 ```
 context: <context of the round...>
-summary: <a simple summary of the round...>
+summary: <[...]...>
 ```
 - When game over, you should output a ending like this:
 ```
@@ -157,6 +161,12 @@ personality=[
     "loves exploration",
     "loves adventure",
     "energetic",
+    "Spanish",
+    "likes to gossips",
+    "enjoys a bit of drama",
+    "dislikes spicy food",
+    "dislikes korean cuisine",
+
     
 ]
 physical.descriptions=[
