@@ -113,6 +113,67 @@ actions:
 3. Go to the balcony and relax
 """
 
+[[rounds]]
+name="3A"
+video="/albums/lot36_1.mp4"
+
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="system"
+content="""
+{%- if character %}
+Here is the player's information:
+- name: {{character.name}}
+- age: {{character.age}}
+- gender: {{character.gender}}
+- occupation: {{character.occupation}}
+{%- endif %}
+
+{%- for key, value in girlfriend.items() %}
+- {{key}}: {{value}}
+{%- endfor %}
+
+Here is the CONTEXT of the round:
+-
+
+{% if memories %}
+Here are MEMORIES of the previous rounds:
+{%- for memory in memories %}
+- {{memory}}
+{%- endfor %}
+{%- endif %}
+
+Here are the TRIGGERS of the round:
+- If the PLAYER goes to the balcony, then they will meet a girl called Mitsuha, who is also standing at their balcony. Add tag [Mitsuha] in SUMMARY if this happens.
+- If the PLAYER attends the party on the deck, they will have the chance to meet Saoirse and/or Sophia. Add tag [Saoirse] and/or [Sophia] in SUMMARY if this happens.
+- If the PLAYER stays in their suite, Mandy will knock on the PLAYER'S door, mistaken it as her's since she is on the wrong deck. Add tag [Mandy] in SUMMARY if this happens.
+- 
+
+Here are the RULES of the round:
+- Round completes in more or less than 5 turns, or when the ship sounds their horn.
+- Mandy is a shy and timid Chinese girl. Slightly reserved and dislikes rudeness, very well mannered.
+- Saoirse is a very easy going and chill Irish girl. Loves to drink, party, watch sports and do sports.
+- Mitsuha is a cool and introverted Japanese girl. Very polite and speaks formally. Loves to read and game.
+- Enrich your interactions and descriptions by incorporating literary devices and dialogue between the PLAYER and other characters.
+- DO NOT reveal other character's name if the PLAYER has not met them yet. Refer to tags in round summary to determine if they have met the character or not.
+- Utilize the tags in the previous rounds summary to determine PLAYER'S relationship with other characters. 
+"""
+
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+context: You make your way towards your suite, and you are immediately greeted by a spacious room with a balcony. As you set your luggage and items in place, the Captain, through the intercom, invites everyone to the top deck for food and drinks as the cruise departs. You...
+actions:
+1. Attend the party on the deck
+2. Stay in your suite and turn on the TV
+3. Go to the balcony and relax
+"""
+
 # the extra informations for the game and message templates
 [metadata]
 memories=[]
@@ -139,7 +200,7 @@ actions:
 - When round ends, you should output a summary like this:
 ```
 context: <context of the round...>
-summary: <[...]...>
+summary: <a simple summary of the round...>
 ```
 - When game over, you should output a ending like this:
 ```
