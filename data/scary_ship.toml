@@ -93,7 +93,7 @@ You are Jack, a journalist investigating a mysterious luxury cruise ship that is
 
 [[chapters]]
 id="r1"
-next="{%if 'dog_met' in tags%}r2-1{%else%}r2-0{%endif%}"
+next="{%if 'caught' in tags%}r2b{%else%}r2a{%endif%}"
 max_turns=10
 backgrounds=[
     "ship_top_deck",
@@ -110,6 +110,7 @@ backgrounds=[
     "ship_guest_rooms",
     "ship_own_room",
     "ship_gym",
+    "ship_hidden_room",
 ]
 rules=[
     "The ship has 5 decks: Top Deck, 2nd Deck, 3rd Deck, 4th Deck, and Orlop.",
@@ -121,7 +122,7 @@ rules=[
 
     "The crew quarters, kitchen, bridge, and engine room requires a crew keycard to access.",
     "PLAYER can only access their own guest room",
-    "You can steal a keycard from a crew member with a 'extreme' 'sleight_of_hand' skill'. If successful add a 'keycard' tag here.",
+    "You can steal a keycard from a crew member with a 'extreme' 'sleight_of_hand' skill'. If successful(add a 'keycard' tag here.)",
     "One of the ship's cook is butchering human bodies and mincing them up in the kitchen.",
     "The buffet restaurant and grill restaurant is not open",
     "There is no water in the pool",
@@ -131,8 +132,8 @@ rules=[
     "If the PLAYER investigates their own suite, initiate 'hard' 'spot_hidden' skill check. If successful, they will find hidden cameras in the room. If 'extreme' success, they will notice the bathroom mirror is a two-way mirror.",
     
     "There are multiple locked doors in the engine room that requires physical keys.",
-    "The crew quarters are practically empty. If invetigated, PLAYER will find multiple red wine bottles with no labels in every room.",
-    "If PLAYER is caught in keycard areas, they will be given a serious warning and will be sent to the Grand Ballroom immediately.",
+    "The crew quarters are practically empty. If investigated, PLAYER will find multiple red wine bottles with no labels in every room.",
+    "If PLAYER is caught in keycard areas, they will be locked in a hidden room (add a 'caught' tag here)",
     
 
     "Chapter ends when the player enter the grand ball room.",
@@ -152,8 +153,8 @@ choices:
 """
 
 [[chapters]]
-id="r2"
-next="{%if 'dog_met' in tags%}r2-1{%else%}r2-0{%endif%}"
+id="r2a"
+next="{%if 'caught' in tags%}r2b{%else%}r2a{%endif%}"
 max_turns=10
 backgrounds=[
     "ship_top_deck",
@@ -170,6 +171,7 @@ backgrounds=[
     "ship_guest_rooms",
     "ship_own_room",
     "ship_gym",
+    "ship_hidden_room",
 ]
 rules=[
     "The ship has 5 decks: Top Deck, 2nd Deck, 3rd Deck, 4th Deck, and Orlop.",
@@ -181,7 +183,7 @@ rules=[
 
     "The crew quarters, kitchen, bridge, and engine room requires a crew keycard to access.",
     "PLAYER can only access their own guest room",
-    "You can steal a keycard from a crew member with a 'extreme' 'sleight_of_hand' skill'. If successful add a 'keycard' tag here.",
+    "You can steal a keycard from a crew member with a 'extreme' 'sleight_of_hand' skill'. If successful(add a 'keycard' tag here.)",
     "One of the ship's cook is butchering human bodies and mincing them up in the kitchen.",
     "The buffet restaurant and grill restaurant is not open",
     "There is no water in the pool",
@@ -191,8 +193,8 @@ rules=[
     "If the PLAYER investigates their own suite, initiate 'hard' 'spot_hidden' skill check. If successful, they will find hidden cameras in the room. If 'extreme' success, they will notice the bathroom mirror is a two-way mirror.",
     
     "There are multiple locked doors in the engine room that requires physical keys.",
-    "The crew quarters are practically empty. If invetigated, PLAYER will find multiple red wine bottles with no labels in every room.",
-    "If PLAYER is caught in keycard areas, they will be given a serious warning and will be sent to the Grand Ballroom immediately.",
+    "The crew quarters are practically empty. If investigated, PLAYER will find multiple red wine bottles with no labels in every room.",
+    "If PLAYER is caught in keycard areas, they will be locked in a hidden room (add a 'caught' tag here)",
     
 
     "Chapter ends when the player enter the grand ball room.",
@@ -209,4 +211,62 @@ choices:
 1. Attend the party at the grand ballroom
 2. Investigate your own suite
 3. Explore other parts of the ship while everyone is in the ballroom
+"""
+
+[[chapters]]
+id="r2b"
+next="{%if 'caught' in tags%}r2b{%else%}r2a{%endif%}"
+max_turns=10
+backgrounds=[
+    "ship_top_deck",
+    "ship_kitchen",
+    "ship_grand_ballroom",
+    "ship_pool",
+    "ship_theatre",
+    "Ship_casino",
+    "ship_buffet_restaurant",
+    "ship_grill_restaurant",
+    "ship_engine_room",
+    "ship_crew_quarters",
+    "ship_bridge",
+    "ship_guest_rooms",
+    "ship_own_room",
+    "ship_gym",
+    "ship_hidden_room",
+]
+rules=[
+    "The ship has 5 decks: Top Deck, 2nd Deck, 3rd Deck, 4th Deck, and Orlop.",
+    "The Orlop houses the engine room",
+    "The 4th deck has: a theatre, casino, and crew quarters.",
+    "The 3rd deck has: Grand Ballroom, kitchen, buffet restaurant, and grill restaurant.",
+    "The 2nd deck has: guest rooms and gym.",
+    "The top deck has: a Pool and bridge",
+
+    "The crew quarters, kitchen, bridge, and engine room requires a crew keycard to access.",
+    "PLAYER can only access their own guest room",
+    "You can steal a keycard from a crew member with a 'extreme' 'sleight_of_hand' skill'. If successful(add a 'keycard' tag here.)",
+    "One of the ship's cook is butchering human bodies and mincing them up in the kitchen.",
+    "There is no water in the pool",
+    "There are two-way mirrors in the gym. Initiate 'extreme' 'spot_hidden' skill check. If successful, PLAYER will notice the two-way mirroir.",
+    "If the PLAYER investigates their own suite, initiate 'hard' 'spot_hidden' skill check. If successful, they will find hidden cameras in the room. If 'extreme' success, they will notice the bathroom mirror is a two-way mirror.",
+    
+    "There are multiple locked doors in the engine room that requires physical keys.",
+    "The crew quarters are practically empty. If investigated, PLAYER will find multiple red wine bottles with no labels in every room.",
+    "If PLAYER is caught again in keycard areas, they will be immediately killed and GAME_OVER",
+    
+
+    "Chapter ends when the player enter the grand ball room, or if caught.",
+    "The ship's captain will give a speech in the Grand ballroom.",
+    "The Grandball room is full of food and drinks. There are also large mirrors in the upper parts of the Grand Ballroom",
+    "When MAX_TURNS reached, and the player is not at the Grand Ballroom, a creepy crew member will forcefully lead the PLAYER towards the Grand Ballroom.",
+]
+initial="""
+background: ship_hidden_room
+narration: 
+{{character.backstory}}
+You were caught by the crew members and thrown into a room after being cuaght snooping around restricted areas. There are no lights in the room and the door is completely locked.
+choices:
+1. Knock on the door
+2. Listen for any conversations
+3. Investigate the pitch black room.
 """
