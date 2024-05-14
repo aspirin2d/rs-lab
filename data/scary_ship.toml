@@ -94,7 +94,7 @@ You are Jack, a journalist investigating a mysterious luxury cruise ship that is
 [[chapters]]
 id="r1"
 next="{%if 'caught' in tags%}r2b{%else%}r2a{%endif%}"
-max_turns=10
+max_turns=5
 backgrounds=[
     "ship_top_deck",
     "ship_kitchen",
@@ -155,7 +155,7 @@ choices:
 [[chapters]]
 id="r2a"
 next="{%if 'caught' in tags%}r2b{%else%}r2a{%endif%}"
-max_turns=10
+max_turns=5
 backgrounds=[
     "ship_top_deck",
     "ship_kitchen",
@@ -216,7 +216,7 @@ choices:
 [[chapters]]
 id="r2b"
 next="{%if 'caught' in tags%}r2b{%else%}r2a{%endif%}"
-max_turns=10
+max_turns=5
 backgrounds=[
     "ship_top_deck",
     "ship_kitchen",
@@ -255,10 +255,8 @@ rules=[
     "If PLAYER is caught again in keycard areas, they will be immediately killed and GAME_OVER",
     
 
-    "Chapter ends when the player enter the grand ball room, or if caught.",
-    "The ship's captain will give a speech in the Grand ballroom.",
-    "The Grandball room is full of food and drinks. There are also large mirrors in the upper parts of the Grand Ballroom",
-    "When MAX_TURNS reached, and the player is not at the Grand Ballroom, a creepy crew member will forcefully lead the PLAYER towards the Grand Ballroom.",
+    "Chapter ends when the player enters their own room, or if caught.",
+    "When MAX_TURNS reached, and the player is not at their own room, they will automatically return to it.",
 ]
 initial="""
 background: ship_hidden_room
