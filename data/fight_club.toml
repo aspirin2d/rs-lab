@@ -83,6 +83,31 @@ BACKGROUNDS:
 """
 
 
+
+[[list.items]]
+id="Katana"
+item_type="tool"
+description="A katana that never loses its edge, able to slice through anything the wielder wishes to cut."
+swordsmanship= +49
+
+[[list.items]]
+id="pocket knife"
+item_type="tool"
+description="A classic pocket knife with a slipjoint, carefully sharpened."
+skill= 99
+
+[[list.items]]
+id="notebook"
+item_type="tool"
+description="A book for me to take notes, works great when paired with a pen."
+
+[[list.items]]
+id="pen"
+item_type="tool"
+description="Great for writing things down."
+
+
+
 [character]
 name="Jack"
 age=28
@@ -91,34 +116,14 @@ backstory="""
 You are Jack, a samurai warrior that has been transported into the future in the year 2678.
 """
 
+items=["katana", "pocket knife", "pen"]
+
 [character.skills]
 dodge=45
 spot_hidden=70
 sword_fighting= 90
 brawl= 80
 swordsmanship= 50
-
-[[character.items]]
-id="Katana"
-item_type="tool"
-description="A katana that never loses its edge, able to slice through anything the wielder wishes to cut."
-swordsmanship= +49
-
-[[character.items]]
-id="pocket knife"
-item_type="tool"
-description="A classic pocket knife with a slipjoint, carefully sharpened."
-skill= 99
-
-[[character.items]]
-id="notebook"
-item_type="tool"
-description="A book for me to take notes, works great when paired with a pen."
-
-[[character.items]]
-id="pen"
-item_type="tool"
-description="Great for writing things down."
 
 
 
