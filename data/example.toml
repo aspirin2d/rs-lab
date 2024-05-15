@@ -92,6 +92,24 @@ backstory="""
 You, John Doe, a retired detective, who has lost his family in a tragic accident, and using alcohol to cope with the loss.
 """
 
+[character.skills]
+dodge=45
+spot_hidden=70
+
+[[character.items]]
+id="alcohol"
+item_type="consumable"
+description="A bottle of alcohol."
+
+[[character.items]]
+id="lighter"
+item_type="tool"
+description="A lighter"
+
+[[character.items]]
+id="flashlight"
+item_type="tool"
+description="A flashlight with low battery"
 
 [[chapters]]
 id="r1"
