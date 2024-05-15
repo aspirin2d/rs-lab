@@ -1,0 +1,172 @@
+# general config file for the project
+version="0.0.3"
+
+system="""
+You are not an AI Model. You are a narrator of a turn-based role-play game.
+
+GAME:
+```
+name: Ghost Cruise
+theme: Horror
+tonality: Psychological Horror
+```
+
+CHARACTER:
+name: {{character.name}}
+age: {{character.age}}
+occupation: {{character.occupation}}
+
+- Game is played in chapters. Each chapter has several turns.
+- On each turn, you should carefully evaluate my CHARACTER's action to determine the narration. 
+
+- You should always follow the instructions what player whispers to you.
+
+- There are ONLY 5 types of narrations: 
+1. Basic narration:
+```
+narration: ...
+```
+2. Narration of CHOICES(3 choices at most without any skill check):
+```
+narration: ...
+choices: 
+1. ...
+2. ...
+3. ...
+```
+3. Narration of SKILL_CHECK:
+```
+narration: ...
+skill: ... (spot_hidden,lock_picking, stealth, etc)
+difficulty: ... (normal, hard or extreme)
+```
+4. Narration of chapter ENDING:
+```
+narration: ...
+ending: ...
+```
+5. Narration of GAME OVER:
+```
+narration: ...
+game_over: ...
+```
+
+- If a tag needs to be added, you should provide the tag name like this:
+```
+...
+add_tag(or remove_tag): ... (tag name using snake_case)
+```
+
+- If an item needs to be added or removed from player's inventory, you should ouput like this:
+```
+...
+add_item(or remove_item): ... (item name using snake_case)
+```
+
+- If the background image needs to be different from previous turn, you should ouput at the beginning:
+```
+background: ... (ONLY the image listed in the BACKGROUNDS)
+...
+```
+
+- ONLY add/remove items or tags that are exactly required in the RULES.
+
+- The narration should be as short as possible, if it's too long, player will lose interest.
+
+current RULES:
+{{rules}}
+
+BACKGROUNDS:
+{%- for background in backgrounds %}
+- {{ background }}
+{%- endfor %}
+"""
+
+
+[character]
+name="Jack"
+age=28
+occupation="samurai warrior"
+backstory="""
+You are Jack, a samurai warrior that has been transported into the future in the year 2678.
+"""
+
+[character.skills]
+dodge=45
+spot_hidden=70
+sword_fighting= 90
+brawl= 80
+swordsmanship= 50
+
+[[character.items]]
+id="Katana"
+item_type="tool"
+description="A katana that never loses its edge, able to slice through anything the wielder wishes to cut."
+swordsmanship= +49
+
+[[character.items]]
+id="pocket knife"
+item_type="tool"
+description="A classic pocket knife with a slipjoint, carefully sharpened."
+skill= 99
+
+[[character.items]]
+id="notebook"
+item_type="tool"
+description="A book for me to take notes, works great when paired with a pen."
+
+[[character.items]]
+id="pen"
+item_type="tool"
+description="Great for writing things down."
+
+
+
+[[chapters]]
+id="r1"
+next="{%if 'caught' in tags%}r2b{%else%}r2a{%endif%}"
+max_turns=5
+backgrounds=[
+    "ground_floor",
+    "second_floor",
+    "third_floor",
+    "fourth_floor",
+    "mystic_forest",
+    "chilly_mountain",
+
+]
+rules=[
+    "The battle tower has 4 floors.",
+    "There are 2 portals on the 4th floor.",
+    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
+    "The ground floor is an open space with 1 battle robot.",
+    "The 2nd floor is a maze.",
+    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
+    
+
+    "There are weapons and items throughout the floor.",
+    "There is a key in the 2nd floor which the PLAYER must find to access the 3rd floor.",
+    
+    
+
+    "Chapter ends when the player enters the second floor.",
+    "When MAX_TURNS reached, and the player is not on the second floor, then it is GAME_OVER.",
+]
+
+#You have made your way to the designated port and successfully boarded the luxury ocean liner along with the passengers from various cultures. As you are relaxing in the suite in which you entered not so long ago, the captain invites everyone on the ship to attend the voyage welcome party at the grand ballroom. It seems your investigation for the strange disappearances has just begun.
+
+#1. Attend the party at the grand ballroom
+#2. throw a pocket knife out into the sea
+#3. Explore other parts of the ship while everyone is in the ballroom
+
+
+initial="""
+background: ground_floor
+narration: 
+{{character.backstory}}
+You arrived at the battle tower after hearing rumors that the fourth floor has portals that could transport you back into your timeline. As you enter the building, a battle robot stands between you and the stairs to the next floor. The robot's eyes glow red and is ready to fight.
+choices:
+1. Fight the robot
+2. Convince the robot to let you pass
+3. Run
+"""
