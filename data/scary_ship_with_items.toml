@@ -87,16 +87,35 @@ BACKGROUNDS:
 name="Jack"
 age=28
 occupation="journalist"
-inventory=[
-    "shotgun",
-    "knife",
-    "balloon",
-]
-
-
 backstory="""
 You are Jack, a journalist investigating a mysterious luxury cruise ship that is related to multiple disappearances.
 """
+
+[character.skills]
+dodge=45
+spot_hidden=70
+
+[[character.items]]
+id="smartphone"
+item_type="tool"
+description="A fully charged smartphone but there's no signal, at least it can still be used as a flashlight or camera."
+
+[[character.items]]
+id="pocket knife"
+item_type="tool"
+description="A classic pocket knife with a slipjoint, carefully sharpened."
+roll_num= 10
+
+[[character.items]]
+id="notebook"
+item_type="tool"
+description="A book for me to take notes, works great when paired with a pen."
+
+[[character.items]]
+id="pen"
+item_type="tool"
+description="Great for writing things down."
+
 
 
 [[chapters]]
@@ -151,17 +170,22 @@ rules=[
     "When MAX_TURNS reached, and the player is not at the Grand Ballroom, a creepy crew member will forcefully lead the PLAYER towards the Grand Ballroom.",
 ]
 
+#You have made your way to the designated port and successfully boarded the luxury ocean liner along with the passengers from various cultures. As you are relaxing in the suite in which you entered not so long ago, the captain invites everyone on the ship to attend the voyage welcome party at the grand ballroom. It seems your investigation for the strange disappearances has just begun.
+
+#1. Attend the party at the grand ballroom
+#2. throw a pocket knife out into the sea
+#3. Explore other parts of the ship while everyone is in the ballroom
 
 
 initial="""
 background: ship_own_room
 narration: 
 {{character.backstory}}
-You have made your way to the designated port and successfully boarded the luxury ocean liner along with the passengers from various cultures. As you are relaxing in the suite in which you entered not so long ago, the captain invites everyone on the ship to attend the voyage welcome party at the grand ballroom. It seems your investigation for the strange disappearances has just begun.
+You have made your way to the designated port and successfully boarded the luxury ocean liner along with the passengers from various cultures. As you are relaxing in the suite in which you entered not so long ago, a strange man barges into your room door with his fists ready.
 choices:
-1. Attend the party at the grand ballroom
-2. throw a knife out into the sea
-3. Explore other parts of the ship while everyone is in the ballroom
+1. Fight the man
+2. jump into the sea
+3. Scream for help
 """
 
 [[chapters]]
