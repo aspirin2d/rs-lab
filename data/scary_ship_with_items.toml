@@ -82,10 +82,18 @@ BACKGROUNDS:
 {%- endfor %}
 """
 
+
 [character]
 name="Jack"
 age=28
 occupation="journalist"
+inventory=[
+    "shotgun",
+    "knife",
+    "balloon",
+]
+
+
 backstory="""
 You are Jack, a journalist investigating a mysterious luxury cruise ship that is related to multiple disappearances.
 """
@@ -124,6 +132,7 @@ rules=[
     "PLAYER can only access their own guest room",
     "You can steal a keycard from a crew member with a 'extreme' 'sleight_of_hand' skill'. If successful(add a 'keycard' tag here.)",
     "If the PLAYER enters the kitchen, they will discover one of the ship's cook is butchering human bodies and mincing them up in there.",
+    "When items in inventory are discarded (remove the '...' tag here)",
     "The buffet restaurant and grill restaurant is not open",
     "There is no water in the pool",
     "The casino is not opened yet.",
@@ -141,6 +150,9 @@ rules=[
     "The Grandball room is full of food and drinks. There are also large mirrors in the upper parts of the Grand Ballroom",
     "When MAX_TURNS reached, and the player is not at the Grand Ballroom, a creepy crew member will forcefully lead the PLAYER towards the Grand Ballroom.",
 ]
+
+
+
 initial="""
 background: ship_own_room
 narration: 
@@ -148,7 +160,7 @@ narration:
 You have made your way to the designated port and successfully boarded the luxury ocean liner along with the passengers from various cultures. As you are relaxing in the suite in which you entered not so long ago, the captain invites everyone on the ship to attend the voyage welcome party at the grand ballroom. It seems your investigation for the strange disappearances has just begun.
 choices:
 1. Attend the party at the grand ballroom
-2. Investigate your own suite
+2. throw a knife out into the sea
 3. Explore other parts of the ship while everyone is in the ballroom
 """
 
