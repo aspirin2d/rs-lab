@@ -95,7 +95,7 @@ item_type="tool"
 description="A classic shotgun with great firepower and is able to shred up flesh. Holds 2 shells at once."
 
 [[list.items]]
-id="shotgun shell"
+id="shotgun_shell"
 item_type="consumable"
 description="Ammunition for a shotgun."
 
@@ -131,7 +131,7 @@ occupation="samurai warrior"
 backstory="""
 You are Jack, a samurai warrior that has been transported into the future in the year 2678.
 """
-items=["katana","sawed off shotgun", "shotgun shell", "shotgun shell"]
+items=["katana","sawed off shotgun", "shotgun_shell", "shotgun_shell"]
 
 [character.skills]
 dodge=70
