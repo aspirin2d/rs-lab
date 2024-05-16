@@ -34,10 +34,10 @@ choices:
 2. ...
 3. ...
 ```
-3. Narration of SKILL_CHECK:
+3. Narration of SKILL CHECK:
 ```
 narration: ...
-skill: ... (spot_hidden,lock_picking, stealth, etc)
+skill_check: ... (spot_hidden,lock_picking, stealth, etc)
 difficulty: ... (normal, hard or exteme)
 ```
 4. Narration of chapter ENDING:
@@ -51,13 +51,13 @@ narration: ...
 game_over: ...
 ```
 
-- If a tag needs to be added, you should provide the tag name like this:
+- If a tag needs to be added or removed, you should provide the tag name like this:
 ```
 ...
 add_tag(or remove_tag): ... (tag name using snake_case)
 ```
 
-- If an item needs to be added or removed from player's inventory, you should ouput like this:
+- If an item needs to be added or removed, you should ouput like this:
 ```
 ...
 add_item(or remove_item): ... (item name using snake_case)
@@ -87,7 +87,7 @@ BACKGROUNDS:
 [[list.items]]
 id="katana"
 item_type="tool"
-description="A katana that never loses its edge, able to slice through anything the wielder wishes to cut."
+description="A standard katana that has seen its fair shair of battles, its edge worn and tsuba scarred."
 
 [[list.items]]
 id="sawed off shotgun"
@@ -95,22 +95,27 @@ item_type="tool"
 description="A classic shotgun with great firepower and is able to shred up flesh. Holds 2 shells at once."
 
 [[list.items]]
+id="blazing_katana"
+item_type="tool"
+description="Legend says that a phoenix is bound to this katana, and its blade will engulf in flames when drawn."
+
+[[list.items]]
 id="shotgun_shell"
 item_type="consumable"
 description="Ammunition for a shotgun."
 
 [[list.items]]
-id="notebook"
+id="war_hammer"
 item_type="tool"
-description="A book for me to take notes, works great when paired with a pen."
+description="A weapon capable of inflicting blunt force trauma and piercing damage. Although it is slow to use, it can pierce through thick armor."
 
 [[list.items]]
-id="pen"
-item_type="tool"
-description="Great for writing things down."
+id="flash_bang"
+item_type="consumable"
+description="A grenade designed to emmit a bright flash instead of an explosion, best for stunning an enemy."
 
 [[list.items]]
-id="spear"
+id="dragon_spear"
 item_type="tool"
 description="A weapon that allows for great reach, great for keeping an enemy away from you."
 
@@ -119,7 +124,10 @@ id="grenade"
 item_type="consumable"
 description="A weapon that detonates after pulling the pin, be careful of its blast radius."
 
-
+[[list.items]]
+id="first_aid_kit"
+item_type="consumable"
+description="A standard first aid kit for dressing wounds and stop severe bleeding. Use it sparingly."
 
 
 
@@ -136,9 +144,11 @@ items=["katana","sawed off shotgun", "shotgun_shell", "shotgun_shell"]
 [character.skills]
 dodge=70
 spot_hidden=70
-katana= 99
-brawl= 80
-shotgun= 10
+katana= 80
+brawl= 70
+shotgun= 50
+spear= 70
+war_hammer= 70
 
 
 
@@ -166,9 +176,12 @@ rules=[
     "There are weapons and items throughout the floor.",
     "There is a key in the 2nd floor which the PLAYER must find to access the 3rd floor.",
     
+    "When the PLAYER is hit they receive 1 injury (add 'injured' tag here)",
+    "If they PLAYER has accumualted 3 injury tags, they will die, and then GAME_OVER.",
     
-    "using the katana from items initiates katana skill check.",
-    "using the sawed off shotgun from items initiates the shotgun skill check.",
+    
+    "using the katana from items initiates 'katana' skill check.",
+    "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
     "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the second floor.",
     "When MAX_TURNS reached, and the player is not on the second floor, then it is GAME_OVER.",
@@ -188,7 +201,7 @@ choices:
 [[chapters]]
 id="r2"
 next="r3"
-max_turns=5
+max_turns=10
 backgrounds=[
     "ground_floor",
     "second_floor",
@@ -208,9 +221,15 @@ rules=[
 
     "There are weapons and items throughout the floor.",
     "PLAYER must navigate through maze and its traps to enter the third floor.",
+    "only items from the items list can be found.",
+
+    "When the PLAYER is hit they receive 1 injury (add 'injured' tag here)",
+    "If they PLAYER has accumualted 3 injury tags, they will die, and then GAME_OVER.",
     
     
-    "using the katana from items initiates katana skill.",
+    "using the katana from items initiates 'katana' skill check.",
+    "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
+    "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the third floor.",
     "When MAX_TURNS reached, and the player is not on the third floor, then it is GAME_OVER.",
 ]
@@ -218,13 +237,13 @@ rules=[
 initial="""
 background: second_floor
 narration: 
-{{character.backstory}}
 You arrive at the second floor, and you immediately find yourself surrounded by walls except for 1 single hallway. As you tread deeper into the hallway, you realize it is a maze, and it seems the only way up is out of this maze.
 
 choices:
 1. Make a left
 2. Make a right
-3. turn around
+3. Look for items
+4. Examine the dragon spear on the ground
 """
 
 [[chapters]]
@@ -249,9 +268,13 @@ rules=[
     
 
     "There are weapons and items throughout the floor.",
+    "When the PLAYER is hit they receive 1 injury (add 'injured' tag here)",
+    "If they PLAYER has accumualted 3 injury tags, they will die, and then GAME_OVER.",
     
     
-    "using the katana from items initiates katana skill.",
+    "using the katana from items initiates 'katana' skill.",
+    "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
+    "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the fourth floor.",
     "When MAX_TURNS reached, and the player is not on the fourth floor, then it is GAME_OVER.",
 ]
@@ -259,7 +282,6 @@ rules=[
 initial="""
 background: third_floor
 narration: 
-{{character.backstory}}
 As you enter the 3rd floor, two strange creatures immediately lunge at you with swords and claws. Luckily, you managed to avoid them with your reflexes, but you may not be so lucky next time. It appears that you must defeat these two opponents before accessing the fourth floor.
 
 choices:
@@ -295,7 +317,9 @@ rules=[
     "If the PLAYER wait and see what happens, then the portal will merge into 1 green portal",
     
     
-    "using the katana from items initiates katana skill.",
+    "using the katana from items initiates 'katana' skill.",
+    "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
+    "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the red portal, blue portal, or green portal.",
     "When MAX_TURNS reached, and the player has not entered a portal, the tower explodes, then it is GAME_OVER.",
 ]
@@ -303,7 +327,6 @@ rules=[
 initial="""
 background: fourth_floor
 narration: 
-{{character.backstory}}
 Before you are two portals, a red and blue one..
 
 choices:
@@ -340,7 +363,9 @@ rules=[
     "There is a robot kungfu master wielding a spear and dao in the mystic forest. This is a boss battle.",
     
     
-    "using the katana from items initiates katana skill.",
+    "using the katana from items initiates 'katana' skill check.",
+    "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
+    "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player defeats the robot kungfu master.",
     "When MAX_TURNS reached, and the player did not defeat the robot kungfu master, then it is GAME_OVER.",
 ]
@@ -348,7 +373,6 @@ rules=[
 initial="""
 background: mystic_forest
 narration: 
-{{character.backstory}}
 You are now in a misty bamboo forest, and it is hard to make clear of your surroundings. You hear a mechanical sound from behind...
 
 choices:
@@ -384,7 +408,9 @@ rules=[
     "There is a giant ape wielding a battle axe in the chilly mountain. This is a boss battle.",
     
     
-    "using the katana from items initiates katana skill.",
+    "using the katana from items initiates 'katana' skill.",
+    "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
+    "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player defeats the giant ape.",
     "When MAX_TURNS reached, and the player did not defeat the giant ape, then it is GAME_OVER.",
 ]
@@ -392,7 +418,6 @@ rules=[
 initial="""
 background: chilly_mountain
 narration: 
-{{character.backstory}}
 You find yourself engulf in cold wind, biting through your clothes and into your skin. Your breathe fogs up, and a shadow towers before you. The shadow reaches behind its back and pulls out a gigantic axe and howls ferociously at you. Its thunderous howl clears the wind, unveiling it to be a giant ape.
 
 choices:
@@ -429,7 +454,9 @@ rules=[
     "There is a demon with shape shifting ability in the ancient temple. This is a boss battle.",
     
     
-    "using the katana from items initiates katana skill.",
+    "using the katana from items initiates 'katana' skill.",
+    "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
+    "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player defeats the demon.",
     "When MAX_TURNS reached, and the player did not defeat the demon, then it is GAME_OVER.",
 ]
