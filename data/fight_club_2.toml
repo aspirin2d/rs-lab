@@ -85,14 +85,19 @@ BACKGROUNDS:
 """
 
 [[list.items]]
-id="Katana"
+id="katana"
 item_type="tool"
 description="A katana that never loses its edge, able to slice through anything the wielder wishes to cut."
 
 [[list.items]]
-id="pocket knife"
+id="sawed off shotgun"
 item_type="tool"
-description="A classic pocket knife with a slipjoint, carefully sharpened."
+description="A classic shotgun with great firepower and is able to shred up flesh. Holds 2 shells at once."
+
+[[list.items]]
+id="shotgun shell"
+item_type="consumable"
+description="Ammunition for a shotgun."
 
 [[list.items]]
 id="notebook"
@@ -104,6 +109,21 @@ id="pen"
 item_type="tool"
 description="Great for writing things down."
 
+[[list.items]]
+id="spear"
+item_type="tool"
+description="A weapon that allows for great reach, great for keeping an enemy away from you."
+
+[[list.items]]
+id="grenade"
+item_type="consumable"
+description="A weapon that detonates after pulling the pin, be careful of its blast radius."
+
+
+
+
+
+
 [character]
 name="Jack"
 age=28
@@ -111,17 +131,21 @@ occupation="samurai warrior"
 backstory="""
 You are Jack, a samurai warrior that has been transported into the future in the year 2678.
 """
-items=["katana","pocket knife","pen"]
+items=["katana","sawed off shotgun", "shotgun shell", "shotgun shell"]
 
 [character.skills]
-dodge=45
+dodge=70
 spot_hidden=70
+katana= 99
+brawl= 80
+shotgun= 10
+
 
 
 [[chapters]]
 id="r1"
-next="{%if 'dog_met' in tags%}r2-1{%else%}r2-0{%endif%}"
-max_turns=15
+next="r2"
+max_turns=5
 backgrounds=[
     "ground_floor",
     "second_floor",
@@ -143,7 +167,9 @@ rules=[
     "There is a key in the 2nd floor which the PLAYER must find to access the 3rd floor.",
     
     
-
+    "using the katana from items initiates katana skill check.",
+    "using the sawed off shotgun from items initiates the shotgun skill check.",
+    "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the second floor.",
     "When MAX_TURNS reached, and the player is not on the second floor, then it is GAME_OVER.",
 ]
@@ -157,4 +183,264 @@ choices:
 1. Fight the robot
 2. Convince the robot to let you pass
 3. Run
+"""
+
+[[chapters]]
+id="r2"
+next="r3"
+max_turns=5
+backgrounds=[
+    "ground_floor",
+    "second_floor",
+    "third_floor",
+    "fourth_floor",
+    "mystic_forest",
+    "chilly_mountain",
+]
+rules=[
+    "The battle tower has 4 floors.",
+    "There are 2 portals on the 4th floor.",
+    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
+    "The ground floor is an open space with 1 battle robot.",
+    "The 2nd floor is a maze.",
+    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
+    
+
+    "There are weapons and items throughout the floor.",
+    "PLAYER must navigate through maze and its traps to enter the third floor.",
+    
+    
+    "using the katana from items initiates katana skill.",
+    "Chapter ends when the player enters the third floor.",
+    "When MAX_TURNS reached, and the player is not on the third floor, then it is GAME_OVER.",
+]
+
+initial="""
+background: second_floor
+narration: 
+{{character.backstory}}
+You arrive at the second floor, and you immediately find yourself surrounded by walls except for 1 single hallway. As you tread deeper into the hallway, you realize it is a maze, and it seems the only way up is out of this maze.
+
+choices:
+1. Make a left
+2. Make a right
+3. turn around
+"""
+
+[[chapters]]
+id="r3"
+next="r4"
+max_turns=10
+backgrounds=[
+    "ground_floor",
+    "second_floor",
+    "third_floor",
+    "fourth_floor",
+    "mystic_forest",
+    "chilly_mountain",
+]
+rules=[
+    "The battle tower has 4 floors.",
+    "There are 2 portals on the 4th floor.",
+    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
+    "The ground floor is an open space with 1 battle robot.",
+    "The 2nd floor is a maze.",
+    "The 3rd floor requires the PLAYER to fight 2 enemies at once. One of them is a humanoid octopus wielding 6 swords. The other is a humanoid lion with a muscular build and sharp claws.",
+    
+
+    "There are weapons and items throughout the floor.",
+    
+    
+    "using the katana from items initiates katana skill.",
+    "Chapter ends when the player enters the fourth floor.",
+    "When MAX_TURNS reached, and the player is not on the fourth floor, then it is GAME_OVER.",
+]
+
+initial="""
+background: third_floor
+narration: 
+{{character.backstory}}
+As you enter the 3rd floor, two strange creatures immediately lunge at you with swords and claws. Luckily, you managed to avoid them with your reflexes, but you may not be so lucky next time. It appears that you must defeat these two opponents before accessing the fourth floor.
+
+choices:
+1. Attack the octopus monster first
+2. Attack the Lion monster first
+3. Position yourself better in the room
+"""
+
+[[chapters]]
+id="r4"
+next="{%if 'red_portal' in tags%}r5a{%elif 'blue_portal' in tags%}r5b{%else%}r5c{%endif%}"
+max_turns=5
+backgrounds=[
+    "ground_floor",
+    "second_floor",
+    "third_floor",
+    "fourth_floor",
+    "mystic_forest",
+    "chilly_mountain",
+]
+rules=[
+    "The battle tower has 4 floors.",
+    "There are 2 portals on the 4th floor, a red one and a blue one.",
+    "When PLAYER enters the red portal. (add a 'red_portal' tag here).",
+    "When PLAYER enters the blue portal. (add a 'blue portal' tag here).",
+    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
+    "The ground floor is an open space with 1 battle robot.",
+    "The 2nd floor is a maze.",
+    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
+    
+
+    "There are weapons and items throughout the floor.",
+    "If the PLAYER wait and see what happens, then the portal will merge into 1 green portal",
+    
+    
+    "using the katana from items initiates katana skill.",
+    "Chapter ends when the player enters the red portal, blue portal, or green portal.",
+    "When MAX_TURNS reached, and the player has not entered a portal, the tower explodes, then it is GAME_OVER.",
+]
+
+initial="""
+background: fourth_floor
+narration: 
+{{character.backstory}}
+Before you are two portals, a red and blue one..
+
+choices:
+1. Enter the red portal
+2. Enter the blue portal
+3. wait and see what happens
+"""
+
+[[chapters]]
+id="r5a"
+next="WIN"
+max_turns=10
+backgrounds=[
+    "ground_floor",
+    "second_floor",
+    "third_floor",
+    "fourth_floor",
+    "mystic_forest",
+    "chilly_mountain",
+    "ancient_temple",
+]
+rules=[
+    "The battle tower has 4 floors.",
+    "There are 2 portals on the 4th floor, a red one and a blue one.",
+    "When PLAYER enters the red portal. (add a 'red_portal' tag here).",
+    "When PLAYER enters the blue portal. (add a 'blue portal' tag here).",
+    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
+    "The ground floor is an open space with 1 battle robot.",
+    "The 2nd floor is a maze.",
+    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
+    
+
+    "There are weapons and items throughout the floor.",
+    "There is a robot kungfu master wielding a spear and dao in the mystic forest. This is a boss battle.",
+    
+    
+    "using the katana from items initiates katana skill.",
+    "Chapter ends when the player defeats the robot kungfu master.",
+    "When MAX_TURNS reached, and the player did not defeat the robot kungfu master, then it is GAME_OVER.",
+]
+
+initial="""
+background: mystic_forest
+narration: 
+{{character.backstory}}
+You are now in a misty bamboo forest, and it is hard to make clear of your surroundings. You hear a mechanical sound from behind...
+
+choices:
+1. Counter
+2. Defend
+3. Dodge
+"""
+
+[[chapters]]
+id="r5b"
+next="WIN"
+max_turns=10
+backgrounds=[
+    "ground_floor",
+    "second_floor",
+    "third_floor",
+    "fourth_floor",
+    "mystic_forest",
+    "chilly_mountain",
+]
+rules=[
+    "The battle tower has 4 floors.",
+    "There are 2 portals on the 4th floor, a red one and a blue one.",
+    "When PLAYER enters the red portal. (add a 'red_portal' tag here).",
+    "When PLAYER enters the blue portal. (add a 'blue portal' tag here).",
+    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
+    "The ground floor is an open space with 1 battle robot.",
+    "The 2nd floor is a maze.",
+    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
+    
+
+    "There are weapons and items throughout the floor.",
+    "There is a giant ape wielding a battle axe in the chilly mountain. This is a boss battle.",
+    
+    
+    "using the katana from items initiates katana skill.",
+    "Chapter ends when the player defeats the giant ape.",
+    "When MAX_TURNS reached, and the player did not defeat the giant ape, then it is GAME_OVER.",
+]
+
+initial="""
+background: chilly_mountain
+narration: 
+{{character.backstory}}
+You find yourself engulf in cold wind, biting through your clothes and into your skin. Your breathe fogs up, and a shadow towers before you. The shadow reaches behind its back and pulls out a gigantic axe and howls ferociously at you. Its thunderous howl clears the wind, unveiling it to be a giant ape.
+
+choices:
+1. Charge in and attack
+2. Create some distance
+3. Wait for it to make its first move
+"""
+
+[[chapters]]
+id="r5c"
+next="WIN"
+max_turns=10
+backgrounds=[
+    "ground_floor",
+    "second_floor",
+    "third_floor",
+    "fourth_floor",
+    "mystic_forest",
+    "chilly_mountain",
+    "ancient_temple",
+]
+rules=[
+    "The battle tower has 4 floors.",
+    "There are 2 portals on the 4th floor, a red one and a blue one.",
+    "When PLAYER enters the red portal. (add a 'red_portal' tag here).",
+    "When PLAYER enters the blue portal. (add a 'blue portal' tag here).",
+    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
+    "The ground floor is an open space with 1 battle robot.",
+    "The 2nd floor is a maze.",
+    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
+    
+
+    "There are weapons and items throughout the floor.",
+    "There is a demon with shape shifting ability in the ancient temple. This is a boss battle.",
+    
+    
+    "using the katana from items initiates katana skill.",
+    "Chapter ends when the player defeats the demon.",
+    "When MAX_TURNS reached, and the player did not defeat the demon, then it is GAME_OVER.",
+]
+
+initial="""
+background: ancient_temple
+narration:
+You are transported to an ancient temple, one that you recognize from your own time period, it was at this moment you realize you found your way back. But, before you could rejoice, a pool of black liquid begin to coalesce into a demon. It glared at you with a smirk, and trasnformed itself into a Chimera.
+
+choices:
+1. Take the initiative
+2. Wait for it to make its first move
+3. Create some distance
 """
