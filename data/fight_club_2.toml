@@ -21,12 +21,12 @@ occupation: {{character.occupation}}
 
 - Your should always follow the instructions what player whispers to you."
 
-- There are ONLY 5 types of narrations: 
+- There are 5 types of narrations: 
 1. Basic narration:
 ```
 narration: ...
 ```
-2. Narration of CHOICES(3 choices at most without any skill check):
+2. Narration of CHOICES(ALWAYS 4 choices, without skill check):
 ```
 narration: ...
 choices: 
@@ -34,7 +34,7 @@ choices:
 2. ...
 3. ...
 ```
-3. Narration of SKILL CHECK:
+3. Narration of SKILL_CHECK:
 ```
 narration: ...
 skill_check: ... (spot_hidden,lock_picking, stealth, etc)
@@ -51,19 +51,20 @@ narration: ...
 game_over: ...
 ```
 
-- If a tag needs to be added or removed, you should provide the tag name like this:
+- There are 3 types of extra information that you can provide to the player at the end of the turn: 
+1. If a tag needs to be added, you should provide the tag name like this:
 ```
 ...
 add_tag(or remove_tag): ... (tag name using snake_case)
 ```
 
-- If an item needs to be added or removed, you should ouput like this:
+2. If an item needs to be added or removed from player's inventory, you should ouput like this:
 ```
 ...
 add_item(or remove_item): ... (item name using snake_case)
 ```
 
-- If the background image needs to be different from previous turn, you should ouput at the beginning:
+3. If the background image needs to be different from previous turn, you should ouput at the beginning:
 ```
 background: ... (ONLY the image listed in the BACKGROUNDS)
 ...
@@ -86,17 +87,17 @@ BACKGROUNDS:
 
 [[list.items]]
 id="katana"
-item_type="tool"
+item_type="equipment"
 description="A standard katana that has seen its fair shair of battles, its edge worn and tsuba scarred."
 
 [[list.items]]
 id="sawed off shotgun"
-item_type="tool"
+item_type="equipment"
 description="A classic shotgun with great firepower and is able to shred up flesh. Holds 2 shells at once."
 
 [[list.items]]
 id="blazing_katana"
-item_type="tool"
+item_type="equipment"
 description="Legend says that a phoenix is bound to this katana, and its blade will engulf in flames when drawn."
 
 [[list.items]]
@@ -106,7 +107,7 @@ description="Ammunition for a shotgun."
 
 [[list.items]]
 id="war_hammer"
-item_type="tool"
+item_type="equipment"
 description="A weapon capable of inflicting blunt force trauma and piercing damage. Although it is slow to use, it can pierce through thick armor."
 
 [[list.items]]
@@ -116,7 +117,7 @@ description="A grenade designed to emmit a bright flash instead of an explosion,
 
 [[list.items]]
 id="dragon_spear"
-item_type="tool"
+item_type="equipment"
 description="A weapon that allows for great reach, great for keeping an enemy away from you."
 
 [[list.items]]
@@ -129,7 +130,10 @@ id="first_aid_kit"
 item_type="consumable"
 description="A standard first aid kit for dressing wounds and stop severe bleeding. Use it sparingly."
 
-
+[[list.items]]
+id="round_shield"
+item_type="equipment"
+description="A durable and light shield made of unknown alloy."
 
 
 [character]
@@ -155,7 +159,7 @@ war_hammer= 70
 [[chapters]]
 id="r1"
 next="r2"
-max_turns=5
+max_turns=10
 backgrounds=[
     "ground_floor",
     "second_floor",
@@ -165,19 +169,17 @@ backgrounds=[
     "chilly_mountain",
 ]
 rules=[
-    "The battle tower has 4 floors.",
-    "There are 2 portals on the 4th floor.",
-    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
     "The ground floor is an open space with 1 battle robot.",
     "The 2nd floor is a maze.",
-    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
     
 
     "There are weapons and items throughout the floor.",
     "There is a key in the 2nd floor which the PLAYER must find to access the 3rd floor.",
     
-    "When the PLAYER is hit they receive 1 injury (add 'injured' tag here)",
-    "If they PLAYER has accumualted 3 injury tags, they will die, and then GAME_OVER.",
+    "When the PLAYER is hit they receive an injury (add 'injured' tag here)",
+    "When the PLAYER is receives another injury when 'injured' tag exists, (add 'injured_2' tag here)",
+    "When the PLAYER is receives a third injury when 'injured_2' tag exists, (add 'injured_3' tag here)",
+    "If they PLAYER has the 'injured_3' tag, they die immediately, and then GAME_OVER.",
     
     
     "using the katana from items initiates 'katana' skill check.",
@@ -196,6 +198,7 @@ choices:
 1. Fight the robot
 2. Convince the robot to let you pass
 3. Run
+4. Look for additional equipment nearby
 """
 
 [[chapters]]
@@ -211,10 +214,6 @@ backgrounds=[
     "chilly_mountain",
 ]
 rules=[
-    "The battle tower has 4 floors.",
-    "There are 2 portals on the 4th floor.",
-    "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
-    "The ground floor is an open space with 1 battle robot.",
     "The 2nd floor is a maze.",
     "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
     
@@ -223,15 +222,17 @@ rules=[
     "PLAYER must navigate through maze and its traps to enter the third floor.",
     "only items from the items list can be found.",
 
-    "When the PLAYER is hit they receive 1 injury (add 'injured' tag here)",
-    "If they PLAYER has accumualted 3 injury tags, they will die, and then GAME_OVER.",
+    "When the PLAYER is hit they receive an injury (add 'injured' tag here)",
+    "When the PLAYER is receives another injury when 'injured' tag exists, (add 'injured_2' tag here)",
+    "When the PLAYER is receives a third injury when 'injured_2' tag exists, (add 'injured_3' tag here)",
+    "If they PLAYER has the 'injured_3' tag, they die immediately, and then GAME_OVER.",
     
     
     "using the katana from items initiates 'katana' skill check.",
     "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
     "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the third floor.",
-    "When MAX_TURNS reached, and the player is not on the third floor, then it is GAME_OVER.",
+    "When MAX_TURNS reached, and the player is not on the third floor, a nuke will drop onto the tower, then it is GAME_OVER.",
 ]
 
 initial="""
@@ -249,7 +250,7 @@ choices:
 [[chapters]]
 id="r3"
 next="r4"
-max_turns=10
+max_turns=15
 backgrounds=[
     "ground_floor",
     "second_floor",
@@ -259,18 +260,16 @@ backgrounds=[
     "chilly_mountain",
 ]
 rules=[
-    "The battle tower has 4 floors.",
     "There are 2 portals on the 4th floor.",
     "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
-    "The ground floor is an open space with 1 battle robot.",
-    "The 2nd floor is a maze.",
     "The 3rd floor requires the PLAYER to fight 2 enemies at once. One of them is a humanoid octopus wielding 6 swords. The other is a humanoid lion with a muscular build and sharp claws.",
     
 
     "There are weapons and items throughout the floor.",
-    "When the PLAYER is hit they receive 1 injury (add 'injured' tag here)",
-    "If they PLAYER has accumualted 3 injury tags, they will die, and then GAME_OVER.",
-    
+    "When the PLAYER is hit they receive an injury (add 'injured' tag here)",
+    "When the PLAYER is receives another injury when 'injured' tag exists, (add 'bleeding' tag here)",
+    "When the PLAYER is receives a third injury when 'injured_2' tag exists, (add 'dying' tag here)",
+    "If they PLAYER has the 'injured_3' tag, they die immediately, and then GAME_OVER.",
     
     "using the katana from items initiates 'katana' skill.",
     "using the sawed off shotgun from items initiates the 'shotgun' skill check.",
@@ -288,6 +287,7 @@ choices:
 1. Attack the octopus monster first
 2. Attack the Lion monster first
 3. Position yourself better in the room
+4. Talk them out of fighting
 """
 
 [[chapters]]
@@ -308,10 +308,6 @@ rules=[
     "When PLAYER enters the red portal. (add a 'red_portal' tag here).",
     "When PLAYER enters the blue portal. (add a 'blue portal' tag here).",
     "1 portal goes to the mystic forest, the other goes to the chilly mountain.",
-    "The ground floor is an open space with 1 battle robot.",
-    "The 2nd floor is a maze.",
-    "The 3rd floor requires the PLAYER to fight 2 enemies at once.",
-    
 
     "There are weapons and items throughout the floor.",
     "If the PLAYER wait and see what happens, then the portal will merge into 1 green portal",
@@ -379,6 +375,7 @@ choices:
 1. Counter
 2. Defend
 3. Dodge
+4. Jump
 """
 
 [[chapters]]
@@ -424,6 +421,7 @@ choices:
 1. Charge in and attack
 2. Create some distance
 3. Wait for it to make its first move
+4. Howl back
 """
 
 [[chapters]]
@@ -470,4 +468,5 @@ choices:
 1. Take the initiative
 2. Wait for it to make its first move
 3. Create some distance
+4. Focus
 """
