@@ -91,19 +91,21 @@ BACKGROUNDS:
 
 [[list.items]]
 id="katana"
-item_type="equipment"
+item_type="weapon"
 description="A standard katana that has seen its fair shair of battles, its edge worn and tsuba scarred."
 [list.items.stats]
 attack="1d6"
 
 [[list.items]]
-id="sawed off shotgun"
-item_type="equipment"
+id="sawed_off_shotgun"
+item_type="weapon"
 description="A classic shotgun with great firepower and is able to shred up flesh. Holds 2 shells at once."
+[list.items.stats]
+attack="1d20"
 
 [[list.items]]
 id="blazing_katana"
-item_type="equipment"
+item_type="weapon"
 description="Legend says that a phoenix is bound to this katana, and its blade will engulf in flames when drawn."
 
 [[list.items]]
@@ -173,7 +175,7 @@ occupation="samurai warrior"
 backstory="""
 You are Jack, a samurai warrior that has been transported into the future in the year 2678.
 """
-items=["katana","sawed off shotgun", "shotgun_shell", "shotgun_shell"]
+items=["katana","sawed_off_shotgun", "shotgun_shell", "shotgun_shell"]
 
 [character.stats]
 hp=30
@@ -184,7 +186,7 @@ dodge=70
 spot_hidden=70
 katana= 80
 brawl= 70
-shotgun= 50
+shotgun= 99
 spear= 70
 war_hammer= 70
 
@@ -203,7 +205,7 @@ backgrounds=[
     "chilly_mountain",
 ]
 rules=[
-    "The ground floor is an open space with 1 battle robot.",
+    "The ground floor is an open space with 'robot'.",
     "The 2nd floor is a maze.",
     
 
