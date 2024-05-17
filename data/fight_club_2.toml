@@ -21,7 +21,7 @@ occupation: {{character.occupation}}
 
 - Your should always follow the instructions what player whispers to you."
 
-- There are 5 types of narrations: 
+- There are 6 types of narrations: 
 1. Basic narration:
 ```
 narration: ...
@@ -40,12 +40,15 @@ narration: ...
 skill_check: ... (spot_hidden,lock_picking, stealth, etc)
 difficulty: ... (normal, hard or exteme)
 ```
-4. Narration of chapter ENDING:
+4. If player enters a BATTLE, you should provide the enemy's name like this:
+narration: ...
+battle_with: ... (enemy_name)
+5. Narration of chapter ENDING:
 ```
 narration: ...
 ending: ...
 ```
-5. Narration of GAME OVER:
+6. Narration of GAME OVER:
 ```
 narration: ...
 game_over: ...
@@ -66,8 +69,9 @@ add_item(or remove_item): ... (item name using snake_case)
 
 3. If the background image needs to be different from previous turn, you should ouput at the beginning:
 ```
-background: ... (ONLY the image listed in the BACKGROUNDS)
 ...
+background: ... (ONLY the image listed in the BACKGROUNDS)
+
 ```
 
 - ONLY add/remove items or tags that are exactly required in the RULES.
@@ -89,6 +93,8 @@ BACKGROUNDS:
 id="katana"
 item_type="equipment"
 description="A standard katana that has seen its fair shair of battles, its edge worn and tsuba scarred."
+[list.items.stats]
+attack="1d6"
 
 [[list.items]]
 id="sawed off shotgun"
@@ -135,6 +141,30 @@ id="round_shield"
 item_type="equipment"
 description="A durable and light shield made of unknown alloy."
 
+[[list.enemies]]
+id="robot"
+name="super bot"
+description="A robot with laser weapons and chainsaw hands"
+[list.enemies.stats]
+hp=5
+attack="1d6"
+
+[[list.enemies]]
+id="octopus"
+name="Hacchi"
+description="A humanoid octopus wielding 6 different type of swords."
+[list.enemies.stats]
+hp=10
+attack="1d6"
+
+[[list.enemies]]
+id="lion"
+name="Simba"
+description="A humanoid lion with a muscular build and sharp metal claws."
+[list.enemies.stats]
+hp=12
+attack="1d6"
+
 
 [character]
 name="Jack"
@@ -144,6 +174,10 @@ backstory="""
 You are Jack, a samurai warrior that has been transported into the future in the year 2678.
 """
 items=["katana","sawed off shotgun", "shotgun_shell", "shotgun_shell"]
+
+[character.stats]
+hp=30
+attack=5
 
 [character.skills]
 dodge=70
