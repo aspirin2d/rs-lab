@@ -132,10 +132,12 @@ items=["alcohol","lighter","flashlight"]
 [character.stats]
 hp=100
 attack=5
+sanity=20
 
 [character.skills]
 dodge=10
 spot_hidden=70
+sanity=60
 
 
 [[chapters]]
@@ -166,6 +168,52 @@ rules=[
     "If player failed to dodge the dog, he will start the BATTLE with 'dog",
     "If player successfully dodges the dog, he will find the collar of the dog on the floor, and you will retrieve the 'basement_key' from the collar.",
     "If player failed to dodge the dog, dog will disappear in the direction of the main bedroom.",
+    "Failing the dodge roll will TRIGGER a SANITY check.",
+
+
+    "The 'basement_key' can also be retrieved with a sucessful 'spot_hidden' skill check in the main bedroom after the dog encounter.",
+    "The 'basement_key' will be removed when chapter ends.",
+
+    "Chapter ends when the player enter the basement.",
+    "When MAX_TURNS reached, if player retrived the 'basement_key' or unlocked the basement door, he will enter the basement. Otherwise, he will leave the house and GAME_OVER.",
+]
+initial="""
+narration: 
+{{character.backstory}}
+You have been investigating a series of murders in the town for many years.
+The recent clues led you to a abandoned house in the forest. Now you are standing in front of the house.
+background: house_front
+"""
+
+
+[[chapters]]
+id="r2-0"
+next= "r3"
+max_turns=15
+backgrounds=[
+    "house_front",
+    "house_basement",
+    "house_study",
+    "house_bedroom",
+    "house_child_bedroom",
+    "house_kitchen",
+    "house_meeting_room",
+    "house_dining_room"
+]
+rules=[
+    "The house has 3 floors: basement, ground floor, and first floor.",
+    "Ground floor has 3 rooms: dining room, meeting room and kitchen",
+    "In ground floor's rooms, player heards some strange noises from the first floor.",
+
+    "Your will discover the door to the basement in the meeting room(add a 'basement_found' tag here).",
+    "Basement's door needs a key or a 'hard' 'lock_picking' skill check to open it.",
+
+    "Second floor has 3 rooms: main bedroom, child's bedroom, study room",
+
+    "If player failed to dodge the dog, he will start the BATTLE with 'dog",
+    "If player successfully dodges the dog, he will find the collar of the dog on the floor, and you will retrieve the 'basement_key' from the collar.",
+    "If player failed to dodge the dog, dog will disappear in the direction of the main bedroom and decrease PLAYER sanity by 50.",
+    "If player's SANITY in character stats drops to a 1/2 or more than a half, they will develop arachnophobioa and will hallucinate about it.",
 
     "The 'basement_key' can also be retrieved with a sucessful 'spot_hidden' skill check in the main bedroom after the dog encounter.",
     "The 'basement_key' will be removed when chapter ends.",

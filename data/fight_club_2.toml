@@ -36,19 +36,22 @@ choices:
 ```
 3. Narration of SKILL_CHECK:
 ```
+4. Narration of SANITY_CHECK:
+```
 narration: ...
 skill_check: ... (spot_hidden,lock_picking, stealth, etc)
 difficulty: ... (normal, hard or exteme)
+sanity_check: ... (sanity)
 ```
-4. If player enters a BATTLE, you should provide the enemy's name like this:
+5. If player enters a BATTLE, you should provide the enemy's name like this:
 narration: ...
 battle_with: ... (enemy_name)
-5. Narration of chapter ENDING:
+6. Narration of chapter ENDING:
 ```
 narration: ...
 ending: ...
 ```
-6. Narration of GAME OVER:
+7. Narration of GAME OVER:
 ```
 narration: ...
 game_over: ...
@@ -214,6 +217,7 @@ items=["blazing_katana","sawed_off_shotgun", "shotgun_shell", "shotgun_shell"]
 [character.stats]
 hp=50
 attack=5
+sanity=30
 
 [character.skills]
 dodge=70
@@ -250,6 +254,8 @@ rules=[
     "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the second floor.",
     "When MAX_TURNS reached, and the player is not on the second floor, then it is GAME_OVER.",
+
+    "Initiate SANITY CHECK when player is hit or injured",
 ]
 
 initial="""
@@ -321,6 +327,9 @@ rules=[
     "remove shotgun shell from items if weapon fired. (remove 'shotgun shell' from character items here.)",
     "Chapter ends when the player enters the fourth floor.",
     "When MAX_TURNS reached, and the player is not on the fourth floor, then it is GAME_OVER.",
+
+    "Player will only die from 3 hits or injury.",
+    "Initiate SANITY CHECK when player is hit or injured",
 ]
 
 initial="""
