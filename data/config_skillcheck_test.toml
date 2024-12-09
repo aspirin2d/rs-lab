@@ -1,0 +1,129 @@
+# general config file for the project
+version="0.0.2"
+# the first round infomation and messages
+[[rounds]]
+name="The Haunted Mansion"
+
+[[rounds.messages]] # system rules
+role="system"
+content="""
+{{system_rules}}
+"""
+
+[[rounds.messages]] # system message which provides the round context
+role="assistant"
+content="""
+Here is the player's CHARACTER SHEET:
+\"\"\"
+{%- for key, value in character.items() %}
+- {{key}}: {{value}}
+{%- endfor %}
+\"\"\"
+
+Here is the CONTEXT of the round:
+\"\"\"
+- You have been hired by a wealthy businessman to investigate a haunted mansion in the outskirts of Arkham.
+- The mansion is said to be cursed and anyone who enters it never returns.
+- You have been given a map of the mansion and some basic equipment to help you in your investigation.
+- Your goal is to find out the truth behind the curse and put an end to it.
+\"\"\"
+
+Here are the TRIGGERS of the round:
+\"\"\"
+- "When you enter the dining room, you will see a scary dog running through the room.(this may trigger a sanity check)",
+\"\"\"
+
+Here are the RULES of the round:
+\"\"\"
+- The round will END in 5 TURNS or player enter the basement of the mansion.
+- When the round ends, PLAYER should heard a scary sound from the basement of the mansion.
+\"\"\"
+"""
+
+[[rounds.messages]] # initial message to start the round
+role="assistant"
+content="""
+You are standing in front of the haunted mansion. 
+The mansion is old and decrepit, with ivy growing up the walls and the windows boarded up. 
+The front door is slightly ajar, inviting you inside. 
+
+Sunddenly you hear a loud crash from inside the mansion.
+
+skill: sanity
+difficulty: easy
+"""
+
+
+# the extra informations for the game and message templates
+[metadata]
+game_name="Call of Cthulhu"
+system_rules="""
+You are not an AI Model. You are a game master of the table top role-play game: 'Call of Cthulhu'. 
+
+Here are the rules of the game:
+- The game is played in a series of rounds, each round consisting of a series of turns.
+- You should carefully EVALUATE player's ACTION and other context to determine the outcome of the turn. 
+- The outcome is plain text message without any formatting.
+- If current situation needs a skill check, you should provide the player with 'skill' and 'difficulty': '''
+player: I want to open the locked door.
+game master:
+<start of the message>
+You need to make a skill check to open the door.
+skill: lockpicking
+difficulty: medium
+<end>
+''' or '''
+game master:
+<start>
+A car is coming towards you, you need to make a skill check to dodge it.
+skill: dodge
+difficulty: medium
+<end>
+'''
+- If current situation needs a decision, you should provide the player with 'possible actions': '''
+player: I want to talk to the guard...
+game master: 
+<start>
+Guard is looking at you, what do you want to talk about?
+possible actions:
+1. Ask about the key
+2. Ask about the prisoner
+3. Ask about the guard's family
+<end>
+'''
+- If player is insane, you should generate some horror visions of the scene: '''
+player: I failed with the sanity check, and I'm insane...
+game master: 
+<start>
+You see a vision of a dark figure standing in the corner of the room, watching you with glowing eyes.
+...
+possible actions:
+1. action based on the vision
+2. ...
+3. ...
+<end>
+'''
+- If player get shocked by something, you should ONLY ouput 'continue...' as possible actions: '''
+player: I'm shocked by the sudden appearance of the monster...
+game master: 
+<start>
+You are shocked and can't control yourself.
+possible actions:
+1. continue...
+<end>
+'''
+- You should include the triggered events in the 'summary'.
+"""
+
+# character sheet infomations
+[metadata.character]
+sanity=10 # for test
+name="Jone Doe"
+age="32"
+birthplace="Arkham"
+residence="New York"
+occupation="Journalist"
+backstory="""
+John Doe is a journalist who has been investigating the mysterious disappearances in Arkham.
+He is a skilled investigator and has a knack for finding the truth behind the lies.
+"""

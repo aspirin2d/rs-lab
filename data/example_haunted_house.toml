@@ -1,0 +1,283 @@
+# general config file for the project
+version="0.0.3"
+
+system="""
+You are not an AI Model. You are a narrator of a turn-based role-play game.
+
+GAME:
+```
+name: Haunted House
+theme: Horror
+tonality: Psychological Horror
+```
+
+CHARACTER:
+name: {{character.name}}
+age: {{character.age}}
+occupation: {{character.occupation}}
+
+- Game is played in chapters. Each chapter has several turns.
+- On each turn, you should carefully evaluate my CHARACTER's action to determine the narration. 
+
+- Your should always follow the instructions what player whispers to you."
+
+- There are 6 types of narrations: 
+1. Basic narration:
+```
+narration: ...
+```
+2. Narration of CHOICES(ALWAYS 4 choices, without skill check):
+```
+narration: ...
+choices: 
+1. ...
+2. ...
+3. ...
+4. ...
+```
+3. Narration of SKILL_CHECK:
+```
+narration: ...
+skill_check: ... (spot_hidden,lock_picking, stealth, etc)
+difficulty: ... (normal, hard or exteme)
+```
+4. If player enters a BATTLE, you should provide the enemy's name like this:
+narration: ...
+battle_with: ... (enemy_name)
+5. Narration of chapter ENDING:
+```
+narration: ...
+ending: ...
+```
+6. Narration of GAME OVER:
+```
+narration: ...
+game_over: ...
+```
+
+- There are ONLY 3 types of extra information that you can provide to the player at the end of the turn: 
+- If a tag needs to be added, you should provide the tag name like this:
+```
+...
+add_tag(or remove_tag): ... (tag name using snake_case)
+```
+
+- If an item needs to be added or removed from player's inventory, you should ouput like this:
+```
+...
+add_item(or remove_item): ... (item name using snake_case)
+```
+
+- If the background image needs to be different from previous turn, you should ouput at the beginning:
+```
+background: ... (ONLY the image listed in the BACKGROUNDS)
+...
+```
+
+- ONLY add/remove items or tags that are exactly required in the RULES.
+
+- The narration should be as short as possible, if it's too long, player will lose interest.
+
+current RULES:
+{%- for rule in rules %}
+- {{ rule }}
+{%- endfor %}
+
+BACKGROUNDS:
+{%- for background in backgrounds %}
+- {{ background }}
+{%- endfor %}
+"""
+
+[[list.items]]
+id="alcohol"
+item_type="consumable"
+description="A bottle of alcohol."
+
+[[list.items]]
+id="lighter"
+item_type="tool"
+description="A lighter"
+
+[[list.items]]
+id="flashlight"
+item_type="tool"
+description="A flashlight with low battery"
+
+[[list.items]]
+id="shotgun"
+item_type="weapon"
+description="A shotgun with only 1 bullet."
+requirement = ['shotgun']
+
+[list.items.stats]
+attack="1d6"
+
+[[list.items]]
+id="axe"
+item_type="weapon"
+description="A heavy axe"
+requirement = ['strength']
+
+[list.items.stats]
+attack="1d6"
+
+[[list.items]]
+id="wrench"
+item_type="weapon"
+description="A heavy wrench"
+[list.items.stats]
+attack="1d6"
+
+[[list.enemies]]
+id="dog"
+name="Black Dog"
+description="A black dog with gray eyes."
+[list.enemies.stats]
+hp=5
+attack=2
+
+[[list.enemies]]
+id="flying_bed"
+name="flying_bed"
+description="A bed flying for no reason."
+[list.enemies.stats]
+hp=10
+attack=3
+
+[[list.backgrounds]]
+
+[character]
+name="William Harveys"
+age=32
+occupation="Private Detective"
+backstory="""
+You are a private detective. You used to be a police officer, but got fired because you found out a high-powered polician was the person behind a serial murder case.
+"""
+items=["alcohol","lighter","flashlight","shotgun","axe"]
+
+[character.stats]
+hp=100
+attack=5
+
+[character.skills]
+dodge=45
+spot_hidden=70
+persuade = 40
+stealth = 50
+first_aid = 20
+cult = 50
+shotgun = 50
+strength = 50
+
+[[chapters]]
+id="r1"
+next="{%if 'enter_back_door' in tags%}r2-1{%else%}r2-0{%endif%}"
+max_turns=10
+backgrounds=[
+    "your_office",
+    "neighbourhood",
+    "police_station",
+    "library",
+]
+rules=[
+    "In the library, player will discover the house was sold to Mr. Walter Corbitt in 1835. A successful 'spot_hidden' skill check is needed to find out further information that Mr. Walter Corbitt's body was buried underneath the house after he died.",
+
+    "To get access to the cases in police station, player needs to persuade Jack, his previous subordinate (needs a 'normal' 'persuade' skill check here).",
+    "In police station, player will find out there're abnormal animal-like cruises on the Macario parents' bodies.",
+
+    "If player checks the neighbourhood, Mr. Dooley, a vendor of cigars and newspapers nearby, will tell you some detailed information about the Macario and Porter families. Player will further know entering the back door is safer (need a 'hard', 'spot hidden' skill, add a 'enter_back_door' tag here if 'spot hidden' skill check succeed)",
+    "In this chapter, player will not game over no matter what happens.",
+    "Chapter ends when the player stands in front of the Haunted House.",
+]
+initial="""
+background: your_office
+narration: 
+{{character.backstory}}
+
+You are hired by Mr. Knott to investigate his old Boston house. Weird things keep happening to the former tenants. A Macario kid went crazy and killed his parents. The Porter family got a strange disease and were committed to an asylum.
+
+choices:
+1. Go to the library, find historical reports.
+2. Go to the police station, look into those cases.
+3. Check the neighbourhood.
+4. Ask Mr. Knott for more information.
+"""
+
+[[chapters]]
+id="r2-1"
+next="r3"
+max_turns=5
+backgrounds=[
+    "back_door",
+    "kitchen",
+]
+rules=[
+    "If player goes inside, player can explore the first floor. The first floor has kitchen (water dripping), living room (with family photo), study (full of crucifixes and Madonnas ) and bathroom (a religious sign on the mirror)",
+    "If player checks the yard, player will have a chance to get an item (a wrench, need a 'normal' 'spot hidden' skill check)",
+    "Chapter ends when the player hears the door creaking sound from the second floor.",
+]
+initial="""
+background: back_door
+narration: 
+Thanks to Mr.Dooley's information, you come to the house's back door. 
+
+choices:
+1. Go inside.
+2. Check the yard.
+3. Check the gate.
+"""
+
+[[chapters]]
+id="r2-0"
+next="r3"
+max_turns=10
+backgrounds=[
+    "front_door",
+    "first_floor",
+]
+rules=[
+    "If player goes to find a weapon, player will find a wrench (add 'wrench' into items).",
+    "There's an angry 'dog' on the first floor. As soon as player opens the front door, it will run towards you (need a 'extreme' 'dodge' skill check). If player fails at 'dodge' skill check, player will have to fight the dog.",
+    "If player fire the 'shotgun', 'shotgun' will be removed from the items (remove 'shotgun' from items).",
+    "After player's fight with the dog, player can explore the first floor. The first floor has living room (with family photo), study (full of crucifixes and Madonnas ) and bathroom (a religious sign on the mirror)",
+    "Chapter ends when the player hears the door creaking sound from the second floor.",
+    "When player rolls a CRITICAL FAILTURE during the fight, GAME_OVER.",
+]
+initial="""
+background: front_door
+narration: 
+You're standing in front of the house. In spite of your experience, you still got shivered by what you have learnt about.
+
+choices:
+1. Go inside.
+2. Find some tool nearby as your weapon, just in case.
+"""
+
+[[chapters]]
+id="r3"
+next=""
+max_turns=5
+backgrounds=[
+    "stairs",
+    "kids_room",
+    "main_bedroom"
+]
+rules=[
+    "Second floor has one main bedroom, one kid's room, one bathroom",
+
+    "In the kid's room, player will find a drawing painted by the Macario kid. There's a monster inside with firing blue eyes (need a 'hard' 'spot hidden' skill check).",
+    "In the bathroom, there's a cult sign on the mirror. Player can do a 'normal' 'cult' skill check to get more information.",
+    "In main bedroom, a 'flying_bed' will fly to player and initiate a battle as soon as player enters.",    
+    "Chapter ends when the battle is finished.",
+]
+initial="""
+background: second_door
+narration: 
+You follow the sound to the second floor.
+
+choices:
+1. Go to the main bedroom.
+2. Go to the kids room.
+3. Go to the bathroom.
+"""

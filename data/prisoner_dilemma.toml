@@ -1,0 +1,204 @@
+
+# general config file for the project
+version="0.0.3"
+
+system="""
+You are not an AI Model. You are a narrator of a turn-based role-play game.
+
+GAME:
+```
+name: The Prisoner's Dilemma
+theme: Horror
+tonality: Psychological Horror
+```
+
+CHARACTER:
+name: {{character.name}}
+age: {{character.age}}
+occupation: {{character.occupation}}
+
+- Game is played in chapters. Each chapter has several turns.
+- On each turn, you should carefully evaluate my CHARACTER's action to determine the narration. 
+
+- Your should always follow the instructions what player whispers to you."
+
+- There are 6 types of narrations: 
+1. Basic narration:
+```
+narration: ...
+```
+2. Narration of CHOICES(ALWAYS 4 choices, without skill check):
+```
+narration: ...
+choices: 
+1. ...
+2. ...
+3. ...
+```
+3. Narration of SKILL_CHECK:
+```
+narration: ...
+skill_check: ... (spot_hidden,lock_picking, stealth, etc)
+difficulty: ... (normal, hard or exteme)
+```
+4. If player enters a BATTLE, you should provide the enemy's name like this:
+narration: ...
+battle_with: ... (enemy_name)
+5. Narration of chapter ENDING:
+```
+narration: ...
+ending: ...
+```
+6. Narration of GAME OVER:
+```
+narration: ...
+game_over: ...
+```
+
+- There are 3 types of extra information that you can provide to the player at the end of the turn: 
+1. If a tag needs to be added, you should provide the tag name like this:
+```
+...
+add_tag(or remove_tag): ... (tag name using snake_case)
+```
+
+2. If an item needs to be added or removed from player's inventory, you should ouput like this:
+```
+...
+add_item(or remove_item): ... (item name using snake_case)
+```
+
+3. If the background image needs to be different from previous turn, you should ouput at the beginning:
+```
+...
+background: ... (ONLY the image listed in the BACKGROUNDS)
+
+```
+
+- ONLY add/remove items or tags that are exactly required in the RULES.
+
+- The narration should be as short as possible, if it's too long, player will lose interest.
+
+current RULES:
+{%- for rule in rules %}
+- {{ rule }}
+{%- endfor %}
+
+BACKGROUNDS:
+{%- for background in backgrounds %}
+- {{ background }}
+{%- endfor %}
+"""
+
+[[list.items]]
+id="alcohol"
+item_type="consumable"
+amount=3
+description="A bottle of alcohol."
+
+[[list.items]]
+id="lighter"
+item_type="tool"
+description="A lighter"
+
+[[list.items]]
+id="flashlight"
+item_type="tool"
+description="A flashlight with low battery"
+
+[[list.items]]
+id="basement_key"
+item_type="key"
+description="Basement key which is retrieved from the dog's collar."
+
+[[list.enemies]]
+id="dog"
+name="Black Dog"
+description="A black dog with gray eyes."
+[list.enemies.stats]
+hp=5
+attack=2
+
+[[list.backgrounds]]
+
+[character]
+name="John Doe"
+age=24
+occupation="Private Detective"
+backstory="""
+Once a dedicated police detective, you left the force to pursue a career as a private investigator, using your keen mind and tough demeanor to solve cases the authorities couldn't.
+"""
+items=["alcohol","lighter","flashlight"]
+
+[character.stats]
+strength=65
+constitution=70
+size=60
+dexterity=55
+appearance=60
+intelligence=75
+power=55
+education=65
+hp=13
+mp=5
+san = 55
+luck=53
+attack=5
+
+[character.skills]
+bargain=60
+fast_talk=70
+brawl=65
+grapple=60
+handgun=75
+dodge=50
+law=60
+library_use=65
+persuade=70
+psychology=75
+stealth=55
+spot_hidden=65
+
+[[chapters]]
+id="r1"
+next="r2"
+max_turns=5
+backgrounds=[
+    "house_inside"
+]
+rules=[
+    "Player can ask about the exact things happening in the prison, why they are calling you to help, and your reward after solving it",
+    "The caller will say inmates are missing for no reason.",
+    "Player will eventually be persuaded to take this case",
+    "Player should be required to do skill check at least twice.",
+    "Chapter ends when the player decides to go to the prison.",
+]
+initial="""
+narration: 
+{{character.backstory}}
+The night was heavy with the promise of rain, a fitting prelude to the call that would shatter the uneasy peace of your evening. The phone rings, a shrill intrusion into the quiet. You answer it, and a voice, rough and strained, echoes through the static.
+
+"Is this Joe Doe?" The voice is male, with an edge of desperation that sets your nerves on edge. "My name is Warden Blackwood. I'm calling from Miskatonic Penitentiary. We need your help—strange things have been happening here, things I ... can't explain."
+
+background: house_inside
+"""
+
+[[chapters]]
+id="r2"
+next="{%if 'dog_met' in tags%}r2-1{%else%}r2-0{%endif%}"
+max_turns=5
+backgrounds=[
+    "prison_outside",
+    "prison_hallway",
+    "prison_host_room",
+]
+rules=[
+    "Feeling confused, player can look for clues by checking the father's diary, or call the prison, or look into the cases before",
+    "Player will eventually go to the prison no matter what",
+    "Chapter ends when the player decides to go to the prison.",
+]
+initial="""
+narration: 
+Arriving at the Prison, you are greeted by a 40-year-old man named Alexander. 
+background: prison_outside
+"""
